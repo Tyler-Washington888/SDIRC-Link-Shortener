@@ -7,7 +7,7 @@ const redirect = async (req, res) => {
         if(url){
             return res.redirect(url.longUrl)
         }else{
-            res.status(404).json({message: 'No url found'})
+            res.status(404).json({message: 'No url was  found'})
         }
     }catch(error){
         console.log(error)
