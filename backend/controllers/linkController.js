@@ -52,7 +52,7 @@ const createLink = async (req, res) => {
       res.status(500).json('Server error');
     }
   } else {
-    res.status(401).json('Invalid long url');
+    res.status(401).json('Invalid long url'); 
   }
 }
 
@@ -62,23 +62,21 @@ const createLink = async (req, res) => {
 const updateLink = async (req, res) => {
   const link = await Url.findById(req.params.id)
 
-
   if (!link){
     res.status(400)
     throw new Error('Link not found')
   }
 
-  link.clicks = link.clicks + 1
-
   const updatedLink = await Url.findByIdAndUpdate(link.id, {
     longUrl: link.longUrl,
     shortUrl: link.shortUrl,
     urlCode: link.urlCode,
-    clicks: link.clicks,
-    date: link.date, 
+    clicks: link.clicks + 1,
+    date: link.date,
   }, {
-    new: true, 
+    new: true,
   })
+
   res.status(200).json(updatedLink)
 }
 

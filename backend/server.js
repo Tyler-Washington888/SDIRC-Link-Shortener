@@ -1,16 +1,16 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
-const colors = require('colors')
 const connectDB = require('./config/db')
 const port = process.env.PORT
+const app = express()
 
 connectDB()
 
-const app = express()
 
-app.use(express.json())
+app.use(express.json({extended: false}));
  
- app.use('/api/links', require('./routes/linkRoutes'))
+app.use('/api/links', require('./routes/linkRoutes'))
+app.use('/', require('./routes/index'))
 
 app.listen(port, () => console.log(`Server started on port ${port}`))
 
