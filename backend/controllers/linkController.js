@@ -14,7 +14,7 @@ const getLinks = async (req, res) => {
 // @route POST /api/links
 // @access Public
 const createLink = async (req, res) => {
-  const { longUrl } = req.body;
+  const { longUrl, email } = req.body;
   const baseUrl = process.env.BASE_URL
 
   // Check base url
@@ -39,6 +39,7 @@ const createLink = async (req, res) => {
           longUrl,
           shortUrl,
           urlCode,
+          email,
           clicks: 0, 
           date: new Date()
         });
@@ -71,6 +72,7 @@ const updateLink = async (req, res) => {
     longUrl: link.longUrl,
     shortUrl: link.shortUrl,
     urlCode: link.urlCode,
+    email: link.email,
     clicks: link.clicks + 1,
     date: link.date,
   }, {
