@@ -14,31 +14,40 @@ const getLinks = async (req, res) => {
 // @route POST /api/links
 // @access Public
 const createLink = async (req, res) => {
-  const { longUrl, email } = req.body;
+  const { longUrl, email, urlCode } = req.body;
   const baseUrl = process.env.BASE_URL
 
-
-  if(!longUrl || !email){
-    res.status(400)
-    throw new Error("Please add all required fields")
-  }
 
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
     return res.status(401).json('Invalid base url');
   }
+  
+  // Check property values
+  if (!longUrl || !email || !urlCode){
+    res.status(400)
+    throw new Error("Please add all required fields")
+  }
 
-  // Create url code
-  const urlCode = shortid.generate();
+  // check if urlCode is taken
+  const alias = await Url.findOne({urlCode})
 
-  // Check long url
+  // send error message if urlCode is taken
+  if (alias){
+    res.status(400).json({message: 'Url name is taken'})
+  }
+
+  // Check if long url is valid
   if (validUrl.isUri(longUrl)) {
     try {
+      // check to see if longUrl exists in database
       let url = await Url.findOne({ longUrl });
 
+      // send error message if longUrl exists
       if (url) {
-        res.json(url).json({message: 'short url already exists'});
+        res.status(400).json(url);
       } else {
+        // create shortUrl
         const shortUrl = baseUrl + '/' + urlCode;
 
         url = await Url.create({
