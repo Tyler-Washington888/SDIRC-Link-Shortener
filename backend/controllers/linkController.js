@@ -17,7 +17,6 @@ const createLink = async (req, res) => {
   const { longUrl, email, urlCode } = req.body;
   const baseUrl = process.env.BASE_URL
 
-
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
     return res.status(401).json('Invalid base url');
@@ -70,6 +69,60 @@ const createLink = async (req, res) => {
   }
 }
 
+// @desc Update link 
+// @route POST /api/links/:id
+// @access Private
+const updateLink = async (req, res) => {
+  const { longUrl, email, urlCode, newUrlCode } = req.body;
+  const baseUrl = process.env.BASE_URL
+
+  // Check base url
+  if (!validUrl.isUri(baseUrl)) {
+    return res.status(401).json('Invalid base url');
+  }
+  
+  // Check property values
+  if (!longUrl || !email || !urlCode || !newUrlCode){
+    res.status(400)
+    throw new Error("Please add all required fields")
+  }
+
+  // check if urlCode is taken
+  const alias = await Url.findOne({newUrlCode})
+
+  // send error message if urlCode is taken
+  if (alias){
+    res.status(400).json({message: 'Url name is taken'})
+  }
+
+  // Check if long url is valid
+  if (validUrl.isUri(longUrl)) {
+    try {
+      // find url by current UrlCode 
+      let url = await Url.findOne({ urlCode });
+
+      // rename shortUrl
+      const shortUrl = baseUrl + '/' + newUrlCode;
+
+      url = await Url.create({
+        longUrl,
+        shortUrl,
+        urlCode: newUrlCode,
+        email,
+        clicks: 0,
+        date: new Date()
+      });
+
+      res.status(200).json(url);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json('Server error');
+    }
+  } else {
+    res.status(401).json('Invalid long url'); 
+  }
+}
+
 
 // @desc Delete link
 // @route GET /api/links/:id
@@ -90,5 +143,6 @@ const deleteLink = async (req, res) => {
 module.exports = {
     getLinks,
     createLink,
+    updateLink,
     deleteLink
 }
