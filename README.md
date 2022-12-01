@@ -82,7 +82,7 @@
 
 - Mobile My URL's Screen 
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915876/SDIRC-Link-Shortener/Mobile-Wireframes/Group_9_n0mbtr.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669928076/SDIRC-Link-Shortener/Mobile-Wireframes/Group_17_re8ikm.png)
 
 - Mobile My URl Details Screen 
 
