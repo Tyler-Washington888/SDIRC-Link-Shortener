@@ -58,7 +58,7 @@
 
 - Mobile Sign In Screen
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669923737/SDIRC-Link-Shortener/Mobile-Wireframes/Group_14_fqmakh.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669924345/SDIRC-Link-Shortener/Mobile-Wireframes/Group_14_1_sq3e1o.png)
 
 - Mobile Shorten URL Screen
 
