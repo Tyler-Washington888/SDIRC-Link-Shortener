@@ -90,7 +90,7 @@
 
 - Mobile Rename URL Screen
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669916063/SDIRC-Link-Shortener/Mobile-Wireframes/Group_11_tmnqon.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669925676/SDIRC-Link-Shortener/Mobile-Wireframes/Group_16_bujxum.png)
 
 
 
