@@ -10,6 +10,25 @@ const getLinks = async (req, res) => {
     res.status(200).json(links)
 }
 
+// @desc Get my links 
+// @route GET /api/myLinks
+// @access Public
+const getMyLinks = async (req, res) => {
+  const {userEmail} = req.body
+  try{
+    const links = await Url.find({email: userEmail})
+
+    if(links){
+      res.status(200).json(links)
+    }else {
+      res.status(401).json({message:'User with this email hasn\'t created any links'}); 
+    }
+  }catch (error){
+    console.error(err);
+    res.status(500).json('Server error');
+  }
+}
+
 // @desc Create link 
 // @route POST /api/links
 // @access Public
@@ -123,7 +142,6 @@ const updateLink = async (req, res) => {
   }
 }
 
-
 // @desc Delete link
 // @route GET /api/links/:id
 // @access Private
@@ -137,11 +155,12 @@ const deleteLink = async (req, res) => {
 
   await link.remove()
 
-  res.status(200).json({id:req.params.id})
+  res.status(200).json({id: req.params.id})
 }
 
 module.exports = {
     getLinks,
+    getMyLinks,
     createLink,
     updateLink,
     deleteLink
