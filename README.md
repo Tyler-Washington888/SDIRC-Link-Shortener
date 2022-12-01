@@ -56,10 +56,6 @@
 
 [Link to Wireframes](https://www.figma.com/file/9ArR80N00RAJ1YmVlvpijc/Wireframes?t=gaMT5kgmH8HfVA9s-6)
 
-- Home Screen   
-
-<img src='meta-minds-fe/src/assets/images/Group 24.png'>
-
 - Mobile Sign In Screen
 
 ![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915201/SDIRC-Link-Shortener/Mobile-Wireframes/Group_3_umbzzx.png)
