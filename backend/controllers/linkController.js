@@ -14,9 +14,9 @@ const getLinks = async (req, res) => {
 // @route GET /api/myLinks
 // @access Public
 const getMyLinks = async (req, res) => {
-  const {userEmail} = req.body
+  const {email} = req.body
   try{
-    const links = await Url.find({email: userEmail})
+    const links = await Url.find({email})
 
     if(links){
       res.status(200).json(links)
