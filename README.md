@@ -1,4 +1,4 @@
-# SDIRC-Link-Shortener
+# SDIRC-Link-Shortener 
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)
@@ -18,25 +18,21 @@
 
 ## Project Overview
 
-[Live Site](https://meta-minds.netlify.app/)
-
-**Meta-Minds** is a blog app that allows users to create and discover ideas about the metaverse. Users begin on the home page where they are provided a preview of all the latest posts. From there, they can click on a post to view it in detail, or navigate to other screens where they can view posts by category and create posts. The first two categories users can navigate to are called 'Meta' and 'Mana'. Meta allows users to read about the company formerly known as Facebook, while Mana allows users to stay up-to-date with one of the BIGGEST metaverse platforms, Decentraland. In addition to these two options, users can also explore the 'Cyrpto' and 'Film' categories. The Crypto category is for users wanting to read about other incredible metaverse platforms, not named Decentraland, and the Film category is for the Sci-Fi/Dystopian enthusiasts who love to dissect movies that incorporate virtual reality and other emerging technologies into their production. 
+**SDIRC-Link-Shortener**  is a URL shortening web service, which provides short aliases for redirection of long URLs. 
 
 <br>
 
 ## MVP
 
-- The Meta Minds MVP is a full CRUD, full stack application with a Rails back end and React front end. It is fully responsive, and styled using CSS. 
-
+- The SDIRC-Link-Shortener MVP is a full CRUD, full stack application built using MongoDB, Express, React and Node. It is fully responsive, and styled using tailwindCSS.
 <br>
 
 ### Goals
 
-- RESTful JSON API built with Ruby on Rails with full CRUD
+- Full CRUD, REST API, built with Node
 - Full CRUD interactive front end built with React
-- Form to input new posts and update posts
-- Display all user posts 
-- Implement Auth for users
+- Forms to authenticate users via Active Directory
+- Forms to create and update shortUrl's
 - Fully responsive styling with two media queries
 - Clean, organized, and structured code
 
@@ -46,14 +42,12 @@
 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|      React       | Javascript library for building user interfaces |
-|   React Router   | Library for routing, enabling navigation between components|
-|   axios | Promise-based HTTP client for Node.js and the browser | 
-|   bcrypt | Password hashing function | 
-|   jwt | Securely transmits information between parties as a JSON object | 
-|   cors | Allows a server to indicate any origins from which a browser should permit loading resources|
-| CKEditor| WYSIWYG rich text editor|
-| Luxon | Library for dealing with dates and times in JavaScript |
-| React HTML Parser | A utility for converting HTML strings into React components | 
+| cors | mechanism that allows servers to indicate origins from which a browser should permit loading resources |
+| colors | color-management system used to style NodeJS console |
+| dotenv | zero-dependency module used to load environment variables from a .env file into process.env. |
+| express | back end web framework used for building RESTful APIs in Node.js |
+| mongoose | data modeling library used to build schema-based solutions to model application data |
+| valid-url | Check whether a string is a valid HTTP URL |
+<br>
 
 

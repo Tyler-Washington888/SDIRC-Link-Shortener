@@ -1,5 +1,4 @@
 const validUrl = require('valid-url')
-const shortid = require('shortid')
 const Url = require('../models/linkModel')
 
 // @desc Get links 
