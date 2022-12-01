@@ -70,7 +70,7 @@
 
 - Mobile Shortened URL Screen
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915508/SDIRC-Link-Shortener/Mobile-Wireframes/Group_5_dehpq6.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669923037/SDIRC-Link-Shortener/Mobile-Wireframes/Group_12_u61phq.png)
 
 - Mobile Navigation Menu
 
