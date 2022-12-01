@@ -74,7 +74,7 @@
 
 - Mobile All URL's Screen
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915662/SDIRC-Link-Shortener/Mobile-Wireframes/Group_7_ufpd5v.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669928076/SDIRC-Link-Shortener/Mobile-Wireframes/Group_17_re8ikm.png)
 
 - Mobile URL Details Screen 
 
