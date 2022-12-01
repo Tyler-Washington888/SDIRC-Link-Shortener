@@ -78,7 +78,7 @@
 
 - Mobile URL Details Screen 
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915775/SDIRC-Link-Shortener/Mobile-Wireframes/Group_8_hhwqwf.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669925388/SDIRC-Link-Shortener/Mobile-Wireframes/Group_15_aadxzd.png)
 
 - Mobile My URL's Screen 
 
