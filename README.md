@@ -74,7 +74,7 @@
 
 - Mobile Navigation Menu
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915582/SDIRC-Link-Shortener/Mobile-Wireframes/Group_6_fgovp8.png)
+![Dummy Link]([https://res.cloudinary.com/daefwvbfj/image/upload/v1669915582/SDIRC-Link-Shortener/Mobile-Wireframes/Group_6_fgovp8.png](https://res.cloudinary.com/daefwvbfj/image/upload/v1669922541/SDIRC-Link-Shortener/Mobile-Wireframes/Group_13_paiqxy.png))
 
 - Mobile Navigation Menu
 
