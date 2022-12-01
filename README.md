@@ -74,11 +74,11 @@
 
 - Mobile Navigation Menu
 
-![Dummy Link]([https://res.cloudinary.com/daefwvbfj/image/upload/v1669915582/SDIRC-Link-Shortener/Mobile-Wireframes/Group_6_fgovp8.png](https://res.cloudinary.com/daefwvbfj/image/upload/v1669922541/SDIRC-Link-Shortener/Mobile-Wireframes/Group_13_paiqxy.png))
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915582/SDIRC-Link-Shortener/Mobile-Wireframes/Group_6_fgovp8.png)
 
 - Mobile Navigation Menu
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915662/SDIRC-Link-Shortener/Mobile-Wireframes/Group_7_ufpd5v.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669922541/SDIRC-Link-Shortener/Mobile-Wireframes/Group_13_paiqxy.png)
 
 - Mobile All URL's Screen
 
