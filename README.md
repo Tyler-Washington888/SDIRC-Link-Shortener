@@ -104,4 +104,4 @@
 
 - Desktop Component Tree
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669916277/SDIRC-Link-Shortener/Mobile-Component-Hierarchy/Group_1_1_oefk7z.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669941821/SDIRC-Link-Shortener/Desktop-Component-Hierarchy/Group_5_u2wgzv.png)
