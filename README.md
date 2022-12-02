@@ -86,7 +86,7 @@
 
 - Mobile My URl Details Screen 
 
-![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669915876/SDIRC-Link-Shortener/Mobile-Wireframes/Group_9_n0mbtr.png)
+![Dummy Link](https://res.cloudinary.com/daefwvbfj/image/upload/v1669941554/SDIRC-Link-Shortener/Mobile-Wireframes/Group_19_yezjr9.png)
 
 - Mobile Rename URL Screen
 
