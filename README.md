@@ -46,6 +46,9 @@
 | express | back end web framework used for building RESTful APIs in Node.js |
 | mongoose | data modeling library used to build schema-based solutions to model application data |
 | valid-url | Check whether a string is a valid HTTP URL |
+| react-router-dom | contains bindings for using React Router in web applications |
+| axios | JS library used to make HTTP requests from node or XMLHttpRequests from the browser |
+| react | front-end JavaScript library for building user interfaces |
 <br>
 
 ### Client (Front End)
