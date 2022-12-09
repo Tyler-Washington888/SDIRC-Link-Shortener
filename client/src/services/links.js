@@ -2,7 +2,7 @@ import api from './apiConfig'
 
 export const getLinks = async () => {
     try {
-      const response = await api.get('/api/links/')
+      const response = await api.get('/api/links')
       return response.data
     } catch (error) {
       throw error

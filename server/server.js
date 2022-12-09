@@ -3,10 +3,12 @@ const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
 const colors  = require('colors')
+let cors = require('cors')
 const app = express()
 
 connectDB()
 
+app.use(cors());
 app.use(express.json({extended: false}));
 app.use(express.urlencoded({ extended: false }));
  

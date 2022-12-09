@@ -16,7 +16,9 @@ res.status(200).json(links)
 // @access Public
 const getMyLinks = asyncHandler (async (req, res) => {
   const {email} = req.body
+
   try{
+    
     const links = await Url.find({email})
 
     if(links){

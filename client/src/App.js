@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes} from "react-router";
+import {getLinks} from "./services/links"
 import AllURLS from "./screens/AllURLS/AllURLS.jsx"
 import CreateURL from "./screens/CreateURL/CreateURL.jsx"
 import Login from "./screens/Login/Login.jsx"
@@ -11,6 +12,20 @@ import RenameMyURL from "./screens/RenameMyURL/RenameMyURL.jsx"
 import URLDetails from "./screens/URLDetails/URLDetails.jsx"
 
 function App(){
+  const [links, setLinks] = useState(null);
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      const links = await getLinks();
+      if(links){
+        setLinks(links)
+      }
+    }
+    fetchLinks(links)
+  }, [])
+
+  
+  console.log(links)
   return (
     <Routes>
       <Route path="/" element={<AllURLS />}/>
