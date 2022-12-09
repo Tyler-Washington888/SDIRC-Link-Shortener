@@ -4,8 +4,8 @@
   "description": "Link Shortener app for SDIRC",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js"
   },
   "author": "",
   "license": "ISC",

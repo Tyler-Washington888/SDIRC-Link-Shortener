@@ -1,18 +1,20 @@
 const validUrl = require('valid-url')
 const Url = require('../models/linkModel')
+const asyncHandler = require("express-async-handler");
+ 
 
 // @desc Get links 
 // @route GET /api/links
 // @access Public
-const getLinks = async (req, res) => {
-    const links = await Url.find()
-    res.status(200).json(links)
-}
+const getLinks = asyncHandler (async (req, res) => {
+const links = await Url.find()
+res.status(200).json(links)
+})
 
 // @desc Get my links 
 // @route GET /api/myLinks
 // @access Public
-const getMyLinks = async (req, res) => {
+const getMyLinks = asyncHandler (async (req, res) => {
   const {email} = req.body
   try{
     const links = await Url.find({email})
@@ -26,12 +28,12 @@ const getMyLinks = async (req, res) => {
     console.error(err);
     res.status(500).json('Server error');
   }
-}
+})
 
 // @desc Create link 
 // @route POST /api/links
 // @access Public
-const createLink = async (req, res) => {
+const createLink = asyncHandler (async (req, res) => {
   const { longUrl, email, urlCode } = req.body;
   const baseUrl = process.env.BASE_URL
 
@@ -85,66 +87,58 @@ const createLink = async (req, res) => {
   } else {
     res.status(401).json('Invalid long url'); 
   }
-}
+})
 
 // @desc Update link 
 // @route POST /api/links/:id
 // @access Private
-const updateLink = async (req, res) => {
-  const { longUrl, email, urlCode, newUrlCode } = req.body;
+const updateLink = asyncHandler (async (req, res) => {
+  const link = await Url.findById(req.params.id)
+  const {newUrlCode} = req.body;
+  const alias = await Url.findOne({urlCode: newUrlCode})
   const baseUrl = process.env.BASE_URL
+  
+   // Check base url
+  if (!validUrl.isUri(baseUrl)) { 
+    return res.status(401).json({message:'Invalid base url'});
+  }
+  // Check if link to update exists
+  if (!link){
+    return res.status(400).json({message:'Link to update was not found'})
+  }
+  // Check if required data came in request
+  if (!newUrlCode){
+    return res.status(400).json({message:'Please add all required fields'})
+  }
+  // check if new urlCode is taken
+  if (alias){
+    return res.status(400).json({message:'Url name is taken'})
+  }
 
-  // Check base url
-  if (!validUrl.isUri(baseUrl)) {
-    return res.status(401).json('Invalid base url');
+  // rename shortUrl
+  const shortUrl = baseUrl + '/' + newUrlCode;
+
+  let newURL = await Url.findByIdAndUpdate(req.params.id, {
+      urlCode: newUrlCode,
+      longUrl: link.longUrl,
+      shortUrl,
+      email: link.email,
+      clicks: link.clicks,
+      date: link.date
+  }, {new: true});
+
+  if(newURL){
+    res.status(400).json(newURL)
+  }else{
+    res.send(400).json('Error updating link')
   }
   
-  // Check property values
-  if (!longUrl || !email || !urlCode || !newUrlCode){
-    res.status(400)
-    throw new Error("Please add all required fields")
-  }
-
-  // check if urlCode is taken
-  const alias = await Url.findOne({newUrlCode})
-
-  // send error message if urlCode is taken
-  if (alias){
-    res.status(400).json({message: 'Url name is taken'})
-  }
-
-  // Check if long url is valid
-  if (validUrl.isUri(longUrl)) {
-    try {
-      // find url by current UrlCode 
-      let url = await Url.findOne({ urlCode });
-
-      // rename shortUrl
-      const shortUrl = baseUrl + '/' + newUrlCode;
-
-      url = await Url.create({
-        longUrl,
-        shortUrl,
-        urlCode: newUrlCode,
-        email,
-        clicks: 0,
-        date: new Date()
-      });
-
-      res.status(200).json(url);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json('Server error');
-    }
-  } else {
-    res.status(401).json('Invalid long url'); 
-  }
-}
+})
 
 // @desc Delete link
 // @route GET /api/links/:id
 // @access Private
-const deleteLink = async (req, res) => {
+const deleteLink = asyncHandler(async (req, res) => {
   const link = await Url.findById(req.params.id)
 
   if (!link){
@@ -155,7 +149,7 @@ const deleteLink = async (req, res) => {
   await link.remove()
 
   res.status(200).json({id: req.params.id})
-}
+})
 
 module.exports = {
     getLinks,
