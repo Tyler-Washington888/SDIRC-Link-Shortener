@@ -18,7 +18,7 @@ export const getMyLinks = async (email) => {
     }
 }
 
-export const createPost = async (post) => {
+export const createLink = async (post) => {
     try {
         const response = await api.post('/api/links/', post)
         return response.data
@@ -27,7 +27,7 @@ export const createPost = async (post) => {
     }
 }
 
-export const updatePost = async (id, post) => {
+export const updateLink = async (id, post) => {
     try {
         const response = await api.put(`/api/links/${id}`, post)
         return response.data
@@ -36,7 +36,7 @@ export const updatePost = async (id, post) => {
     }
 }
 
-export const deletePost = async (id) => {
+export const deleteLink= async (id) => {
     try {
         const response = await api.delete(`/api/links/${id}`)
         return response.data

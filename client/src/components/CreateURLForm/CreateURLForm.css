@@ -1,0 +1,95 @@
+.cf {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: white;
+  margin-top: 10%;
+  width: 90%;
+  height: 75%;
+  padding: 5%;
+  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  font-size: x-large;
+  /* background-color: blue; */
+}
+
+.cf-content-container {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cf-link-logo {
+  width: 40px;
+  margin-right: 2%;
+}
+
+.cf-logo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cf-longURL-input {
+  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  width: 95%;
+  height: 60px;
+  border-width: 0px;
+  padding: 0% 2.5% 0% 2.5%;
+  background-color: white;
+  font-size: x-large;
+}
+
+.cf-newUrl-container {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  font-size: x-large;
+}
+
+.cf-domain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30%;
+  box-shadow: 0 4px 4px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  font-size: smaller;
+  margin-right: 1px;
+}
+
+.cf-newURL-input {
+  box-shadow: 0 4px 4px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  width: 70%;
+  border-width: 0px;
+  background-color: white;
+  font-size: x-large;
+  padding: 0% 2.5% 0% 2.5%;
+}
+
+.cf-button {
+  height: 80;
+  width: 30%;
+  font-size: 80%;
+  background-color: #8fc853;
+  border-width: 0px;
+  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+}
+
+.cf-button-container {
+  height: 60px;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

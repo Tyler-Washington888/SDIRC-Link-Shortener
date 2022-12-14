@@ -1,43 +1,35 @@
+import { Route, Routes } from "react-router";
+import AllURLS from "./screens/AllURLS/AllURLS.jsx";
+import Login from "./screens/Login/Login.jsx";
+import MyURLS from "./screens/MyURLS/MyURLS.jsx";
+import Nav from "./components/Nav/Nav.jsx";
+import "./App.css";
 import { useState, useEffect } from "react";
-import { Route, Routes} from "react-router";
-import {getLinks} from "./services/links"
-import AllURLS from "./screens/AllURLS/AllURLS.jsx"
-import CreateURL from "./screens/CreateURL/CreateURL.jsx"
-import Login from "./screens/Login/Login.jsx"
-import MyURLDetails from "./screens/MyURLDetails/MyURLDetails.jsx"
-import MyURLS from "./screens/MyURLS/MyURLS.jsx"
-import NavMenu from "./screens/NavMenu/NavMenu.jsx"
-import NewURL from "./screens/NewURL/NewURL.jsx"
-import RenameMyURL from "./screens/RenameMyURL/RenameMyURL.jsx"
-import URLDetails from "./screens/URLDetails/URLDetails.jsx"
+import { getLinks } from "./services/links.js";
 
-function App(){
+function App() {
   const [links, setLinks] = useState(null);
 
   useEffect(() => {
     const fetchLinks = async () => {
-      const links = await getLinks();
-      if(links){
-        setLinks(links)
+      let links = await getLinks();
+      if (links) {
+        links = links.reverse();
+        setLinks(links);
       }
-    }
-    fetchLinks(links)
-  }, [])
+    };
+    fetchLinks(links);
+  }, [links]);
 
-  
-  console.log(links)
   return (
-    <Routes>
-      <Route path="/" element={<AllURLS />}/>
-      <Route path="/create" element={<CreateURL />}/>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/my-url-details/:id" element={<MyURLDetails />}/>
-      <Route path="/my-urls" element={<MyURLS />}/>
-      <Route path="/nav-menu" element={<NavMenu/>}/>
-      <Route path="/new-url/:id" element={<NewURL />}/>
-      <Route path="/rename-my-url/id" element={<RenameMyURL/>}/>
-      <Route path="/url-details" element={<URLDetails />}/>
-    </Routes>
+    <div className="App">
+      <Nav />
+      <Routes>
+        <Route path="/" element={<AllURLS />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/my-urls" element={<MyURLS />} />
+      </Routes>
+    </div>
   );
 }
 
