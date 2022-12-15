@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Nav />
       <Routes>
-        <Route path="/" element={<AllURLS />} />
+        <Route path="/" element={<AllURLS links={links} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/my-urls" element={<MyURLS />} />
       </Routes>

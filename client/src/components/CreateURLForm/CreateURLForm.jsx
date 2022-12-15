@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
 import { createLink } from "../../services/links";
 import "./CreateURLForm.css";
+import { useState } from "react";
 
-function CreateURLForm() {
+function CreateURLForm({ setNewUrl }) {
   //   will get user.email from user object once i integrate active directory
   const user = { email: "tyler.washington.work" };
   const [formData, setFormData] = useState({
@@ -22,8 +21,21 @@ function CreateURLForm() {
   };
 
   const handleCreateForm = async (formData) => {
-    const newLink = await createLink(formData);
-    console.log("hello");
+    const newUrl = await createLink(formData);
+    if (newUrl) {
+      setFormData((prevState) => ({
+        longUrl: "",
+        urlCode: "",
+        email: user.email,
+      }));
+
+      setNewUrl({
+        longUrl: newUrl.longUrl,
+        shortUrl: newUrl.shortUrl,
+      });
+    } else {
+      console.log(newUrl.error);
+    }
   };
 
   return (
