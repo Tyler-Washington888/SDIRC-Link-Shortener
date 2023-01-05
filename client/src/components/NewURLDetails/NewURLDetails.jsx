@@ -1,8 +1,12 @@
 import React from "react";
 import "./NewURLDetails.css";
+import { Link } from "react-router-dom";
 
-function NewURLDetails({ newUrl }) {
-  const handleClick = () => {};
+function NewURLDetails({ newUrl, setNewUrl }) {
+  const handleClick = () => {
+    setNewUrl((prevState) => !prevState);
+  };
+
   return (
     <form
       className="nd"
@@ -21,9 +25,7 @@ function NewURLDetails({ newUrl }) {
             <div>Long URL</div>
           </div>
           <div className="nd-longURL-container">
-            <div className="nd-longURL">
-              heyggggggggggggggggggggggggggggggggggggggggggggggg
-            </div>
+            <div className="nd-text">{newUrl.longUrl}</div>
           </div>
         </label>
         <label>
@@ -36,41 +38,11 @@ function NewURLDetails({ newUrl }) {
             <div>SDIRC.tiny URL</div>
           </div>
           <div className="nd-longURL-container">
-            <div className="nd-longURL">
-              yoo99999999999999999999999999999999999999999999
-            </div>
+            <div className="nd-text">{newUrl.shortUrl}</div>
           </div>
         </label>
-        <div className="nd-button-container">
-          <div className="nd-tall-butts">
-            <button className="nd-each-tall-butt butt-one">
-              <img
-                className="tall-butt-logo"
-                alt="open logo"
-                src="https://res.cloudinary.com/daefwvbfj/image/upload/v1671123568/SDIRC-Link-Shortener/images%20and%20icons/forward_bovpmu.png"
-              ></img>
-              <div>Open</div>
-            </button>
-            <button className="nd-each-tall-butt butt-two">
-              <img
-                className="tall-butt-logo"
-                alt="email logo"
-                src="https://res.cloudinary.com/daefwvbfj/image/upload/v1671124050/SDIRC-Link-Shortener/images%20and%20icons/mail_1_le8x2k.png"
-              ></img>
-              <div>Email</div>
-            </button>
-            <button className="nd-each-tall-butt butt-three">
-              <img
-                className="tall-butt-logo"
-                alt="copy logo"
-                src="https://res.cloudinary.com/daefwvbfj/image/upload/v1671124154/SDIRC-Link-Shortener/images%20and%20icons/copy_th0h4q.png"
-              ></img>
-              <div>Copy</div>
-            </button>
-          </div>
-          <div className="nd-long-butt">
-            <button className="nd-new-url-button">New URL</button>
-          </div>
+        <div onClick={handleClick} className="nd-button-container">
+          <button className="nd-new-url-button">New URL</button>
         </div>
       </div>
     </form>

@@ -21,10 +21,6 @@ const getMyLinks = asyncHandler(async (req, res) => {
 
     if (links) {
       res.status(200).json(links);
-    } else {
-      res
-        .status(401)
-        .json({ message: "User with this email hasn't created any links" });
     }
   } catch (error) {
     console.error(err);
@@ -41,13 +37,12 @@ const createLink = asyncHandler(async (req, res) => {
 
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
-    return res.status(401).json("Invalid base url");
+    return res.status(401).json("Please enter a valid Base URL");
   }
 
   // Check property values
   if (!longUrl || !email || !urlCode) {
-    res.status(400);
-    throw new Error("Please add all required fields");
+    return res.status(400).json("Please enter all required fields");
   }
 
   // check if urlCode is taken
@@ -55,7 +50,7 @@ const createLink = asyncHandler(async (req, res) => {
 
   // send error message if urlCode is taken
   if (alias) {
-    res.status(400).json({ message: "Url name is taken" });
+    return res.status(400).json("Please enter a URL Name that isn't taken");
   }
 
   // Check if long url is valid
@@ -66,7 +61,7 @@ const createLink = asyncHandler(async (req, res) => {
 
       // send error message if longUrl exists
       if (url) {
-        res.status(400).json(url);
+        res.status(400).json("Please enter a Long URL that isn't taken");
       } else {
         // create shortUrl
         const shortUrl = baseUrl + "/" + urlCode;
@@ -83,11 +78,10 @@ const createLink = asyncHandler(async (req, res) => {
         res.status(200).json(url);
       }
     } catch (err) {
-      console.error(err);
       res.status(500).json("Server error");
     }
   } else {
-    res.status(401).json("Invalid long url");
+    res.status(401).json("Please enter a valid Long URL");
   }
 });
 

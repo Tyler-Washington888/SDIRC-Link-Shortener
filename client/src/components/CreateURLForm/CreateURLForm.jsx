@@ -2,7 +2,7 @@ import { createLink } from "../../services/links";
 import "./CreateURLForm.css";
 import { useState } from "react";
 
-function CreateURLForm({ setNewUrl }) {
+function CreateURLForm({ setNewUrl, setRefresh }) {
   //   will get user.email from user object once i integrate active directory
   const user = { email: "tyler.washington.work" };
   const [formData, setFormData] = useState({
@@ -20,10 +20,11 @@ function CreateURLForm({ setNewUrl }) {
     }));
   };
 
-  const handleCreateForm = async (formData) => {
+  const handleCreateForm = async (e, formData) => {
+    e.preventDefault();
     const newUrl = await createLink(formData);
     if (newUrl) {
-      setFormData((prevState) => ({
+      setFormData(() => ({
         longUrl: "",
         urlCode: "",
         email: user.email,
@@ -33,19 +34,15 @@ function CreateURLForm({ setNewUrl }) {
         longUrl: newUrl.longUrl,
         shortUrl: newUrl.shortUrl,
       });
+
+      setRefresh((prevState) => !prevState);
     } else {
-      console.log(newUrl.error);
+      // console.log(newUrl.error);
     }
   };
 
   return (
-    <form
-      className="cf"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleCreateForm(formData);
-      }}
-    >
+    <form className="cf" onSubmit={handleCreateForm(formData)}>
       <div className="cf-content-container">
         <label>
           <div className="cf-logo-title">
@@ -82,6 +79,7 @@ function CreateURLForm({ setNewUrl }) {
               name="urlCode"
               value={urlCode}
               onChange={handleChange}
+              required
             />
           </div>
         </label>

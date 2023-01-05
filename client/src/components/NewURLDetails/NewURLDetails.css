@@ -42,86 +42,44 @@
   border-radius: 6px;
   width: 95%;
   height: 60px;
+  /* background-color: aqua; */
   border-width: 0px;
   padding: 0% 2.5% 0% 2.5%;
   background-color: white;
   font-size: x-large;
 }
 
-.nd-longURL {
+.nd-text {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 70%;
+  height: 50%;
   border-width: 0px;
-  overflow-y: hidden;
+  overflow-x: scroll;
+  font-size: x-large;
+  /* background-color: blueviolet; */
+  white-space: nowrap;
 }
 
-.nd-longURL::-webkit-scrollbar {
+.nd-text::-webkit-scrollbar {
   display: none;
 }
 
 .nd-button-container {
-  width: 100%;
-  height: 110px;
+  height: 55px;
+  /* background-color: brown; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
-
-.nd-tall-butts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 67%;
-}
-
-.nd-each-tall-butt {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
-  width: 25%;
-  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
-  border-radius: 6px;
-  border-width: 0px;
-  font-size: large;
-}
-
-.nd-long-butt {
-  display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-  width: 33%;
-  height: 100%;
 }
+
 .nd-new-url-button {
-  width: 78%;
-  height: 47%;
-  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
-  border-radius: 6px;
-  border-width: 0px;
+  height: 100%;
+  width: 40%;
+  font-size: 80%;
   background-color: #8fc853;
-  font-size: large;
-}
-
-.butt-one {
-  background-color: #d98443;
-}
-
-.butt-two {
-  background-color: #17a8b6;
-}
-
-.butt-three {
-  background-color: #3764d7;
-}
-
-.tall-butt-logo {
-  width: 30px;
-  height: 30px;
-  margin-bottom: -18%;
+  border-width: 0px;
+  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }

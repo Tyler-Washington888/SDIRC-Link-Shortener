@@ -76,20 +76,19 @@
   padding: 0% 2.5% 0% 2.5%;
 }
 
-.cf-button {
-  height: 80;
-  width: 30%;
-  font-size: 80%;
-  background-color: #8fc853;
-  border-width: 0px;
-  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
-  border-radius: 2px;
-}
-
 .cf-button-container {
   height: 55px;
   /* background-color: brown; */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+.cf-button {
+  height: 80;
+  width: 40%;
+  font-size: 80%;
+  background-color: #8fc853;
+  border-width: 0px;
+  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }

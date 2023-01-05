@@ -9,25 +9,41 @@ import { getLinks } from "./services/links.js";
 
 function App() {
   const [links, setLinks] = useState(null);
+  const [myLinks, setMyLinks] = useState(null);
+  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     const fetchLinks = async () => {
-      let links = await getLinks();
-      if (links) {
-        links = links.reverse();
-        setLinks(links);
+      let allLinks = await getLinks();
+      if (allLinks) {
+        allLinks = allLinks.reverse();
+
+        // filters AllLinks array for userLinks
+        const userLinks = allLinks.filter(
+          (link) => link.email === "tyler.washington.work"
+        );
+
+        setLinks(allLinks);
+        setMyLinks(userLinks);
       }
     };
-    fetchLinks(links);
-  }, [links]);
+
+    fetchLinks();
+  }, [refresh]);
 
   return (
     <div className="App">
       <Nav />
       <Routes>
-        <Route path="/" element={<AllURLS links={links} />} />
+        <Route
+          path="/"
+          element={<AllURLS links={links} setRefresh={setRefresh} />}
+        />
         <Route path="/login" element={<Login />} />
-        <Route path="/my-urls" element={<MyURLS />} />
+        <Route
+          path="/my-urls"
+          element={<MyURLS myLinks={myLinks} setRefresh={setRefresh} />}
+        />
       </Routes>
     </div>
   );
