@@ -1,6 +1,6 @@
 import React from "react";
 
-function MyURLSTable({ myLinks, setUpdateURL }) {
+function MyURLSTable({ myLinks, setUpdateURL, setUpdatedURL }) {
   return (
     <table>
       <thead>
@@ -23,6 +23,8 @@ function MyURLSTable({ myLinks, setUpdateURL }) {
               <td>
                 <button
                   onClick={() => {
+                    setUpdatedURL(null);
+
                     setUpdateURL({
                       urlCode: "",
                       longURL: link.longUrl,

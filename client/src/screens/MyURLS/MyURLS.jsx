@@ -5,7 +5,7 @@ import "./MyURLS.css";
 import { useState } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
-import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetail";
+import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 
 function MyURLS({ myLinks, setRefresh }) {
   const [newUrl, setNewUrl] = useState(null);
@@ -17,7 +17,7 @@ function MyURLS({ myLinks, setRefresh }) {
       {updateURL || updatedURL ? (
         <div>
           <div>
-            {!updatedURL ? (
+            {updateURL && !updatedURL ? (
               <div>
                 Hi Tyler, complete the form to update the custom name for your
                 URL!
@@ -27,7 +27,7 @@ function MyURLS({ myLinks, setRefresh }) {
             )}
           </div>
           <div>
-            {!updatedURL ? (
+            {updateURL && !updatedURL ? (
               <UpdateURL
                 setUpdateURL={setUpdateURL}
                 updateURL={updateURL}
@@ -61,7 +61,11 @@ function MyURLS({ myLinks, setRefresh }) {
         </div>
       )}
       <div>
-        <MyURLSTable myLinks={myLinks} setUpdateURL={setUpdateURL} />
+        <MyURLSTable
+          myLinks={myLinks}
+          setUpdateURL={setUpdateURL}
+          setUpdatedURL={setUpdatedURL}
+        />
       </div>
     </div>
   );

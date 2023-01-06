@@ -127,7 +127,7 @@ const updateLink = asyncHandler(async (req, res) => {
     { new: true }
   );
   if (newURL) {
-    res.status(400).json(newURL);
+    res.status(200).json(newURL);
   } else {
     res.send(400).json("Error updating link");
   }

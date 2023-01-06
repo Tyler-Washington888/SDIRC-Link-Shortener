@@ -3,7 +3,7 @@ import { updateLink } from "../../services/links";
 import { useState } from "react";
 
 function UpdateURL({ updateURL, setUpdatedURL, setUpdateURL, setRefresh }) {
-  const [formData, setFormData] = useState({ newUrlCode: " " });
+  const [formData, setFormData] = useState({ newUrlCode: "" });
 
   const { newUrlCode } = formData;
 
@@ -14,18 +14,13 @@ function UpdateURL({ updateURL, setUpdatedURL, setUpdateURL, setRefresh }) {
       [name]: value,
     }));
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     const updatedLink = await updateLink(updateURL.id, formData);
     if (updatedLink) {
-      setRefresh((prevState) => !prevState);
-
       setUpdatedURL({
         longURL: updateURL.longURL,
         oldShortURL: updateURL.shortURL,
-        newShortURL: updatedLink.shortURL,
+        newShortURL: updatedLink.shortUrl,
       });
 
       setUpdateURL(null);
@@ -33,7 +28,12 @@ function UpdateURL({ updateURL, setUpdatedURL, setUpdateURL, setRefresh }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
       <div>
         <label>
           <div>
