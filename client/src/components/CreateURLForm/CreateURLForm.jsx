@@ -20,8 +20,7 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
     }));
   };
 
-  const handleCreateForm = async (e, formData) => {
-    e.preventDefault();
+  const handleCreateForm = async () => {
     const newUrl = await createLink(formData);
     if (newUrl) {
       setFormData(() => ({
@@ -34,15 +33,19 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
         longUrl: newUrl.longUrl,
         shortUrl: newUrl.shortUrl,
       });
-
-      setRefresh((prevState) => !prevState);
     } else {
       // console.log(newUrl.error);
     }
   };
 
   return (
-    <form className="cf" onSubmit={handleCreateForm(formData)}>
+    <form
+      className="cf"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleCreateForm();
+      }}
+    >
       <div className="cf-content-container">
         <label>
           <div className="cf-logo-title">

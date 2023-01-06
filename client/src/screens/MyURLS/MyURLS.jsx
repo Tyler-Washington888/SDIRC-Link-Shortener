@@ -5,6 +5,7 @@ import "./MyURLS.css";
 import { useState } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
+import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetail";
 
 function MyURLS({ myLinks, setRefresh }) {
   const [newUrl, setNewUrl] = useState(null);
@@ -28,13 +29,16 @@ function MyURLS({ myLinks, setRefresh }) {
           <div>
             {!updatedURL ? (
               <UpdateURL
-                setUpdateURL={setUpdatedURL}
+                setUpdateURL={setUpdateURL}
                 updateURL={updateURL}
-                setUpdatedURL={setUpdateURL}
+                setUpdatedURL={setUpdatedURL}
                 setRefresh={setRefresh}
               />
             ) : (
-              <CreateURLForm setNewUrl={setNewUrl} setRefresh={setRefresh} />
+              <UpdatedURLDetails
+                updatedURL={updatedURL}
+                setUpdatedURL={setUpdatedURL}
+              />
             )}
           </div>
         </div>

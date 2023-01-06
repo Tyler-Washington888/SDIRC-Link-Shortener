@@ -24,7 +24,7 @@ function MyURLSTable({ myLinks, setUpdateURL }) {
                 <button
                   onClick={() => {
                     setUpdateURL({
-                      urlCOde: "",
+                      urlCode: "",
                       longURL: link.longUrl,
                       shortURL: link.shortUrl,
                       email: link.email,

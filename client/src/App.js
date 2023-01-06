@@ -10,7 +10,6 @@ import { getLinks } from "./services/links.js";
 function App() {
   const [links, setLinks] = useState(null);
   const [myLinks, setMyLinks] = useState(null);
-  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     const fetchLinks = async () => {
@@ -29,21 +28,15 @@ function App() {
     };
 
     fetchLinks();
-  }, [refresh]);
+  }, [links]);
 
   return (
     <div className="App">
       <Nav />
       <Routes>
-        <Route
-          path="/"
-          element={<AllURLS links={links} setRefresh={setRefresh} />}
-        />
+        <Route path="/" element={<AllURLS links={links} />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/my-urls"
-          element={<MyURLS myLinks={myLinks} setRefresh={setRefresh} />}
-        />
+        <Route path="/my-urls" element={<MyURLS myLinks={myLinks} />} />
       </Routes>
     </div>
   );
