@@ -1,0 +1,38 @@
+table {
+  border-collapse: collapse;
+}
+
+.all-urls-container {
+  width: 100%;
+}
+
+.all-urls-thead {
+  font-size: 25px;
+  height: 80px;
+  /* background-color: red; */
+  color: white;
+}
+
+.th-short-long-url {
+  text-align: left;
+}
+
+.long-url {
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.th-createdOn-clicks {
+  text-align: center;
+}
+
+.all-urls-tr {
+  height: 90px;
+  font-size: 20px;
+}
+
+tr:nth-child(even) {
+  background-color: #41608e38;
+}

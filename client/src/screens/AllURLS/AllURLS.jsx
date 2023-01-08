@@ -1,9 +1,9 @@
 import React from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
-import URLSTable from "../../components/URLSTable/URLSTable";
 import "./AllURLS.css";
 import { useState } from "react";
+import URLSTable from "../../components/URLSTable/URLSTable.jsx";
 
 function AllURLS({ links, setRefresh }) {
   const [newUrl, setNewUrl] = useState(null);
@@ -30,6 +30,7 @@ function AllURLS({ links, setRefresh }) {
           )}
         </div>
       </div>
+      <div className="mid-page-banner"></div>
       <div className="aurls-table-container">
         <URLSTable links={links} />
       </div>

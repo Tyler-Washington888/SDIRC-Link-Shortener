@@ -13,7 +13,7 @@
   width: 70%;
   height: 170px;
   align-items: center;
-  /* background-color: aquamarine; */
+  /* background-color: red; */
 }
 .aurls-banner {
   width: 100%;
@@ -26,7 +26,51 @@
   text-decoration: none;
   color: white;
   align-items: center;
+  /* background-color: chartreuse; */
+  width: 50%;
+  height: 100%;
 }
+
+.nav-user-logout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  align-items: flex-end;
+  /* background-color: cyan; */
+  width: 50%;
+  height: 100%;
+}
+
+.nav-text-user {
+  margin-top: 3%;
+  color: white;
+  font-size: 50px;
+  margin-bottom: 3%;
+  /* background-color: darkgoldenrod; */
+  width: 80%;
+  text-align: end;
+}
+
+.nav-all-my-logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: flex-end;
+  /* background-color: red; */
+  width: 80%;
+}
+
+.left-margin {
+  margin-left: 10%;
+}
+
+.nav-text-right {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
 .nav-logo {
   height: 120px;
   width: 120px;

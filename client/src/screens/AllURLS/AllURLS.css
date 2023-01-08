@@ -13,6 +13,7 @@
   flex-direction: row;
   height: 550px;
   width: 70%;
+  margin-bottom: 4%;
 }
 .aurls-cta {
   /* background-color: red; */
@@ -35,4 +36,23 @@
   width: 50%;
   height: 100%;
   align-items: flex-end;
+}
+
+.aurls-table-container {
+  /* background-color: darkcyan; */
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: space-around;
+  z-index: 10;
+  position: relative;
+  bottom: 80px;
+}
+
+.mid-page-banner {
+  background-color: #41608e;
+  height: 80px;
+  width: 100vw;
+  z-index: 0px;
 }
