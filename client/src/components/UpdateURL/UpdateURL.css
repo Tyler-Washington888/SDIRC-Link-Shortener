@@ -1,0 +1,118 @@
+.update-url {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: white;
+  margin-top: 10%;
+  width: 90%;
+  height: 90%;
+  padding: 5%;
+  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  font-size: x-large;
+}
+
+.update-content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.update-link-logo {
+  width: 40px;
+  margin-right: 2%;
+}
+
+.update-logo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.update-longURL-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  width: 95%;
+  height: 60px;
+  /* background-color: aqua; */
+  border-width: 0px;
+  padding: 0% 2.5% 0% 2.5%;
+  background-color: white;
+  font-size: x-large;
+}
+
+.update-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  border-width: 0px;
+  overflow-x: scroll;
+  font-size: x-large;
+  /* background-color: blueviolet; */
+  white-space: nowrap;
+}
+
+.update-newUrl-container {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  font-size: x-large;
+}
+
+.update-newURL-input {
+  box-shadow: 0 4px 4px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  width: 70%;
+  border-width: 0px;
+  background-color: white;
+  font-size: x-large;
+  padding: 0% 2.5% 0% 2.5%;
+}
+
+.update-button-container {
+  height: 55px;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.update-button {
+  height: 80px;
+  width: 40%;
+  font-size: 80%;
+  background-color: #8fc853;
+  border-width: 0px;
+  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+}
+
+.update-button:hover {
+  background-color: #8fc853;
+  border-radius: 6px;
+}
+
+.update-domain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30%;
+  box-shadow: 0 4px 4px 4px rgba(0, 4, 4, 0.4);
+  border-radius: 6px;
+  font-size: smaller;
+  margin-right: 1px;
+}
+
+.update-text::-webkit-scrollbar {
+  display: none;
+}

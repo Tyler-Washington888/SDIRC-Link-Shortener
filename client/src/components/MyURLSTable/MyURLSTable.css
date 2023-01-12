@@ -1,0 +1,54 @@
+.my-urls-container {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.my-urls-thead {
+  font-size: 25px;
+  height: 80px;
+  /* background-color: red; */
+  color: white;
+}
+
+.th.my-short-url {
+  width: 20%;
+}
+
+.my-urls-th-short-long-url {
+  text-align: left;
+}
+
+.my-urls-long-url {
+  max-width: 600px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.th-createdOn-clicks-edit {
+  text-align: center;
+}
+
+.my-urls-tr {
+  height: 110px;
+  font-size: 20px;
+}
+
+tr:nth-child(even) {
+  background-color: #41608e38;
+}
+
+.my-urls-button {
+  height: 50px;
+  width: 90px;
+  background-color: #8fc853;
+  border-width: 0px;
+  font-size: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.my-urls-button:hover {
+  height: 55px;
+  width: 90px;
+}

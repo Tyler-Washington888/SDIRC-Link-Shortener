@@ -1,27 +1,36 @@
 import React from "react";
+import "./MyURLSTable.css";
 
-function MyURLSTable({ myLinks, setUpdateURL, setUpdatedURL }) {
+function MyURLSTable({
+  myLinks,
+  setUpdateURL,
+  setUpdatedURL,
+  setErrorMessage,
+}) {
   return (
-    <table>
-      <thead>
+    <table className="my-urls-container">
+      <thead className="my-urls-thead">
         <tr>
-          <th>Short URL</th>
-          {/* <th>Long URL</th> */}
-          <th>Created On</th>
-          <th>Clicks</th>
-          <th>Edit</th>
+          <th className="my-urls-th-short-long-url my-short-url">Short URL</th>
+          <th className="my-urls-th-short-long-url">Long URL</th>
+          <th className="my-urls-th-createdOn-clicks-edit">Date</th>
+          <th className="my-urls-th-createdOn-clicks-edit">Clicks</th>
+          <th className="my-urls-th-createdOn-clicks-edit">Edit</th>
         </tr>
       </thead>
       <tbody>
         {myLinks?.map((link, index) => {
           return (
-            <tr key={index}>
+            <tr className="my-urls-tr" key={index}>
               <td>{link.shortUrl}</td>
-              {/* <td>{link.longUrl}</td> */}
-              <td>{link.date.slice(4, 15)}</td>
-              <td>{link.clicks}</td>
-              <td>
+              <td className="my-urls-long-url">{link.longUrl}</td>
+              <td className="th-createdOn-clicks-edit">
+                {link.date.slice(4, 15)}
+              </td>
+              <td className="th-createdOn-clicks-edit">{link.clicks}</td>
+              <td className="th-createdOn-clicks-edit">
                 <button
+                  className="my-urls-button"
                   onClick={() => {
                     setUpdatedURL(null);
 
@@ -32,6 +41,8 @@ function MyURLSTable({ myLinks, setUpdateURL, setUpdatedURL }) {
                       email: link.email,
                       id: link._id,
                     });
+
+                    setErrorMessage(null);
                   }}
                 >
                   Edit

@@ -5,8 +5,8 @@ function URLSTable({ links }) {
   return (
     <table className="all-urls-container">
       <thead className="all-urls-thead">
-        <tr>
-          <th className="th-short-long-url">Short URL</th>
+        <tr className="all-urls-thead-column-width">
+          <th className="th-short-long-url all-short-url">Short URL</th>
           <th className="th-short-long-url">Long URL</th>
           <th className="th-createdOn-clicks">Date</th>
           <th className="th-createdOn-clicks">Clicks</th>

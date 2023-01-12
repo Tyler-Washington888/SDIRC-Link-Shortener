@@ -28,6 +28,8 @@ export const createLink = async (post) => {
        * The request was made and the server responded with a
        * status code that falls out of the range of 2xx
        */
+
+      return error.response.data;
       console.log(error.response.data);
       console.log(error.response.status);
     } else if (error.request) {
@@ -41,7 +43,6 @@ export const createLink = async (post) => {
       // Something happened in setting up the request and triggered an Error
       console.log("Error", error.message);
     }
-    console.log(error);
   }
 };
 

@@ -1,8 +1,14 @@
 import { createLink } from "../../services/links";
 import "./CreateURLForm.css";
 import { useState } from "react";
+import {
+  checkEmptyStrings,
+  emptyStringMessages,
+  resetStyles,
+} from "../../utils/emptyStrings";
+import { checkIsValidURL, handleServerErrors } from "../../utils/validURL";
 
-function CreateURLForm({ setNewUrl, setRefresh }) {
+function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
   //   will get user.email from user object once i integrate active directory
   const user = { email: "tyler.washington.work" };
   const [formData, setFormData] = useState({
@@ -21,8 +27,30 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
   };
 
   const handleCreateForm = async () => {
+    resetStyles();
+    setErrorMessage(null);
+
+    let checkEmpty = checkEmptyStrings(
+      longUrl,
+      urlCode,
+      setErrorMessage,
+      emptyStringMessages[0],
+      emptyStringMessages[1],
+      emptyStringMessages[2]
+    );
+
+    if (checkEmpty) {
+      return;
+    }
+
+    let checkValid = checkIsValidURL(urlCode, setErrorMessage);
+    if (checkValid) {
+      return;
+    }
+
     const newUrl = await createLink(formData);
-    if (newUrl) {
+    if (typeof newUrl !== "string") {
+      setErrorMessage(null);
       setFormData(() => ({
         longUrl: "",
         urlCode: "",
@@ -34,7 +62,7 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
         shortUrl: newUrl.shortUrl,
       });
     } else {
-      // console.log(newUrl.error);
+      handleServerErrors(newUrl, setErrorMessage);
     }
   };
 
@@ -58,6 +86,7 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
           </div>
           <input
             className="cf-longURL-input"
+            id="longURL-box"
             type="text"
             name="longUrl"
             value={longUrl}
@@ -68,21 +97,21 @@ function CreateURLForm({ setNewUrl, setRefresh }) {
         <label>
           <div className="cf-logo-title">
             <img
-              className="cf-link-logo"
+              className="cf-link-logo nurlname-box"
               src="https://res.cloudinary.com/daefwvbfj/image/upload/v1671034407/SDIRC-Link-Shortener/images%20and%20icons/new_rvnngw.png"
               alt="link logo"
             />
             <div>New URL Name</div>
           </div>
           <div className="cf-newUrl-container">
-            <div className="cf-domain">https://sdirc</div>
+            <div className="cf-domain">https://sdirc/</div>
             <input
               className="cf-newURL-input"
+              id="newURL-box"
               type="text"
               name="urlCode"
               value={urlCode}
               onChange={handleChange}
-              required
             />
           </div>
         </label>

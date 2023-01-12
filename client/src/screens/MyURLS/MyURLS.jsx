@@ -6,33 +6,46 @@ import { useState } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
+import "./MyURLS.css";
 
 function MyURLS({ myLinks, setRefresh }) {
   const [newUrl, setNewUrl] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   return (
-    <div>
+    <div className="murls-container">
       {updateURL || updatedURL ? (
-        <div>
-          <div>
+        <div className="murls-create update-margin">
+          <div className="murls-cta">
             {updateURL && !updatedURL ? (
-              <div>
+              <div className="murls-text">
                 Hi Tyler, complete the form to update the custom name for your
                 URL!
               </div>
             ) : (
-              <div>Tyler, your link has been renamed and is ready for use.</div>
+              <div className="murls-text">
+                Tyler, your link has been renamed and is ready for use.
+              </div>
+            )}
+            {errorMessage ? (
+              <div className="murls-errorContainer ">
+                <h1 className="murls-error-header">**ERROR CREATING URL**</h1>
+                <div className="murls-error-message">{errorMessage}</div>
+              </div>
+            ) : (
+              <div>hey</div>
             )}
           </div>
-          <div>
+          <div className="murls-form-container">
             {updateURL && !updatedURL ? (
               <UpdateURL
                 setUpdateURL={setUpdateURL}
                 updateURL={updateURL}
                 setUpdatedURL={setUpdatedURL}
                 setRefresh={setRefresh}
+                setErrorMessage={setErrorMessage}
               />
             ) : (
               <UpdatedURLDetails
@@ -43,28 +56,46 @@ function MyURLS({ myLinks, setRefresh }) {
           </div>
         </div>
       ) : (
-        <div>
-          <div>
+        <div className="murls-create">
+          <div className="murls-cta">
             {newUrl ? (
-              <div>Tyler, your link was shortened and is ready for use.</div>
+              <div className="murls-text">
+                Tyler, your link was shortened and is ready for use.
+              </div>
             ) : (
-              <div>Hi Tyler, complete the form to create a shortened URL!</div>
+              <div className="murls-text">
+                Hi Tyler, complete the form to create a shortened URL!
+              </div>
+            )}
+            {errorMessage ? (
+              <div className="murls-errorContainer ">
+                <h1 className="murls-error-header">**ERROR CREATING URL**</h1>
+                <div className="murls-error-message">{errorMessage}</div>
+              </div>
+            ) : (
+              <div></div>
             )}
           </div>
-          <div>
+          <div className="murls-form-container">
             {newUrl ? (
               <NewURLDetails newUrl={newUrl} setNewUrl={setNewUrl} />
             ) : (
-              <CreateURLForm setNewUrl={setNewUrl} setRefresh={setRefresh} />
+              <CreateURLForm
+                setNewUrl={setNewUrl}
+                setErrorMessage={setErrorMessage}
+                setRefresh={setRefresh}
+              />
             )}
           </div>
         </div>
       )}
-      <div>
+      <div className="mid-page-banner"></div>
+      <div className="murls-table-container">
         <MyURLSTable
           myLinks={myLinks}
           setUpdateURL={setUpdateURL}
           setUpdatedURL={setUpdatedURL}
+          setErrorMessage={setErrorMessage}
         />
       </div>
     </div>

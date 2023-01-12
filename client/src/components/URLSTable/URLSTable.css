@@ -1,9 +1,10 @@
-table {
+.all-urls-container {
+  width: 100%;
   border-collapse: collapse;
 }
 
-.all-urls-container {
-  width: 100%;
+th.all-short-url {
+  width: 27%;
 }
 
 .all-urls-thead {

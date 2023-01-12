@@ -7,6 +7,7 @@ import URLSTable from "../../components/URLSTable/URLSTable.jsx";
 
 function AllURLS({ links, setRefresh }) {
   const [newUrl, setNewUrl] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   return (
     <div className="aurls-container">
@@ -21,12 +22,24 @@ function AllURLS({ links, setRefresh }) {
               Hi Tyler, complete the form to create a shortened URL!
             </div>
           )}
+          {errorMessage ? (
+            <div className="aurls-errorContainer ">
+              <h1 className="error-header">**ERROR CREATING URL**</h1>
+              <div className="error-message">{errorMessage}</div>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
         <div className="aurls-form-container">
           {newUrl ? (
             <NewURLDetails newUrl={newUrl} setNewUrl={setNewUrl} />
           ) : (
-            <CreateURLForm setNewUrl={setNewUrl} setRefresh={setRefresh} />
+            <CreateURLForm
+              setErrorMessage={setErrorMessage}
+              setNewUrl={setNewUrl}
+              setRefresh={setRefresh}
+            />
           )}
         </div>
       </div>
