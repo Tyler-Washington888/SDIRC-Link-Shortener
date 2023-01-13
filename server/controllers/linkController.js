@@ -108,7 +108,7 @@ const updateLink = asyncHandler(async (req, res) => {
   }
   // check if new urlCode is taken
   if (alias) {
-    return res.status(400).json({ message: "Url name is taken" });
+    return res.status(400).json("Url name is taken");
   }
 
   // rename shortUrl

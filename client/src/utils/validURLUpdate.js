@@ -1,7 +1,7 @@
 export const checkIsValidURLUpdate = (str, func) => {
   // ensure str is three characters long
   if (str.length < 3) {
-    let newBox = document.getElementById("update-newURL-input");
+    let newBox = document.getElementsByClassName("update-newURL-input")[0];
     newBox.style.borderWidth = "6px";
     newBox.style.borderColor = "red";
     func("New URL Name must be at least three characters.");
@@ -80,7 +80,7 @@ export const checkIsValidURLUpdate = (str, func) => {
 
   for (let i = 0; i < str.length; i++) {
     if (valid[str[i]] == undefined) {
-      let newBox = document.getElementById("update-newURL-input");
+      let newBox = document.getElementsByClassName("update-newURL-input")[0];
       newBox.style.borderWidth = "6px";
       newBox.style.borderColor = "red";
 
@@ -96,13 +96,14 @@ export const handleServerErrorsUpdate = (string, func) => {
   switch (string) {
     case "Url name is taken":
       func("URL Name is taken");
-      let newBox = document.getElementById("newURL-box");
-      newBox.style.borderWidth = "6px";
-      newBox.style.borderColor = "red";
+      let newBoxx = document.getElementsByClassName("update-newURL-input")[0];
+      newBoxx.style.borderWidth = "6px";
+      newBoxx.style.borderColor = "red";
       break;
     case "Error updating link":
       func(
         "Server is down. Please try again soon and contact tech support if error persists."
       );
+      break;
   }
 };

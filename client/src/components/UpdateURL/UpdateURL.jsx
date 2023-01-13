@@ -39,10 +39,10 @@ function UpdateURL({
       return;
     }
 
-    // let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
-    // if (checkValid) {
-    //   return;
-    // }
+    let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
+    if (checkValid) {
+      return;
+    }
 
     const updatedLink = await updateLink(updateURL.id, formData);
     if (typeof updatedLink !== "string") {
@@ -54,7 +54,7 @@ function UpdateURL({
 
       setUpdateURL(null);
     } else {
-      // handleServerErrorsUpdate(newUrlCode, setErrorMessage);
+      handleServerErrorsUpdate(updatedLink, setErrorMessage);
     }
   };
 
