@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./MyURLS.css";
@@ -7,14 +7,17 @@ import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
+import { LinkContext } from "../../App";
 
-function MyURLS({ myLinks, setRefresh, setMyLinks }) {
+function MyURLS() {
   const [newUrl, setNewUrl] = useState(null);
   const [mySortedLinks, setMySortedLinks] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
   const [sortByClicks, setSortByClicks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const { links, refreshLinks } = useContext(LinkContext);
 
   return (
     <div className="murls-container">
@@ -46,7 +49,6 @@ function MyURLS({ myLinks, setRefresh, setMyLinks }) {
                 setUpdateURL={setUpdateURL}
                 updateURL={updateURL}
                 setUpdatedURL={setUpdatedURL}
-                setRefresh={setRefresh}
                 setErrorMessage={setErrorMessage}
               />
             ) : (
@@ -93,24 +95,12 @@ function MyURLS({ myLinks, setRefresh, setMyLinks }) {
       )}
       <div className="mid-page-banner"></div>
       <div className="murls-table-container">
-        {mySortedLinks ? (
-          <MyURLSTable
-            setMyLinks={setMyLinks}
-            myLinks={mySortedLinks}
-            setUpdateURL={setUpdateURL}
-            setUpdatedURL={setUpdatedURL}
-            setErrorMessage={setErrorMessage}
-          />
-        ) : (
-          <MyURLSTable
-            sortByClicks={sortByClicks}
-            setMyLinks={setMyLinks}
-            myLinks={myLinks}
-            setUpdateURL={setUpdateURL}
-            setUpdatedURL={setUpdatedURL}
-            setErrorMessage={setErrorMessage}
-          />
-        )}
+        <MyURLSTable
+          sortByClicks={mySortedLinks ? false : sortByClicks}
+          setUpdateURL={setUpdateURL}
+          setUpdatedURL={setUpdatedURL}
+          setErrorMessage={setErrorMessage}
+        />
       </div>
     </div>
   );

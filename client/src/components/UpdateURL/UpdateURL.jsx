@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { updateLink } from "../../services/links";
 import { useState } from "react";
+import { Form } from "react-router-dom";
 import "./UpdateURL.css";
 import {
   checkEmptyStringsUpdate,
@@ -10,17 +11,19 @@ import {
   checkIsValidURLUpdate,
   handleServerErrorsUpdate,
 } from "../../utils/validURLUpdate";
+import { LinkContext } from "../../App";
 
 function UpdateURL({
   setErrorMessage,
   updateURL,
   setUpdatedURL,
   setUpdateURL,
-  setRefresh,
 }) {
   const [formData, setFormData] = useState({ newUrlCode: "" });
 
   const { newUrlCode } = formData;
+
+  const { links, refreshLinks } = useContext(LinkContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,14 +56,14 @@ function UpdateURL({
       });
 
       setUpdateURL(null);
-      setRefresh((prevState) => !prevState);
+      refreshLinks();
     } else {
       handleServerErrorsUpdate(updatedLink, setErrorMessage);
     }
   };
 
   return (
-    <form
+    <Form
       className="update-url"
       onSubmit={(e) => {
         e.preventDefault();
@@ -121,7 +124,7 @@ function UpdateURL({
           <button className="update-button">Update</button>
         </di>
       </div>
-    </form>
+    </Form>
   );
 }
 
