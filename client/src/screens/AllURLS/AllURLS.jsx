@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./AllURLS.css";
 import { useState } from "react";
 import URLSTable from "../../components/URLSTable/URLSTable.jsx";
+import { LinkContext } from "../../App";
 
-function AllURLS({ links, setRefresh }) {
+function AllURLS() {
   const [newUrl, setNewUrl] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const { links, refreshLinks } = useContext(LinkContext);
 
   return (
     <div className="aurls-container">
@@ -38,14 +41,13 @@ function AllURLS({ links, setRefresh }) {
             <CreateURLForm
               setErrorMessage={setErrorMessage}
               setNewUrl={setNewUrl}
-              setRefresh={setRefresh}
             />
           )}
         </div>
       </div>
       <div className="mid-page-banner"></div>
       <div className="aurls-table-container">
-        <URLSTable links={links} />
+        <URLSTable />
       </div>
     </div>
   );

@@ -1,16 +1,20 @@
 import { createLink } from "../../services/links";
 import "./CreateURLForm.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Form, useSubmit } from "react-router-dom";
 import {
   checkEmptyStrings,
   emptyStringMessages,
   resetStyles,
 } from "../../utils/emptyStrings";
 import { checkIsValidURL, handleServerErrors } from "../../utils/validURL";
+import { LinkContext } from "../../App";
 
-function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
+function CreateURLForm({ setErrorMessage, setNewUrl }) {
   //   will get user.email from user object once i integrate active directory
   const user = { email: "tyler.washington.work" };
+  const submit = useSubmit();
+  const { links, refreshLinks } = useContext(LinkContext);
   const [formData, setFormData] = useState({
     longUrl: "",
     urlCode: "",
@@ -62,14 +66,16 @@ function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
         shortUrl: newUrl.shortUrl,
       });
 
-      setRefresh((prevState) => !prevState);
+      // setRefresh((prevState) => !prevState);
+      refreshLinks();
+      submit(null, { method: "post", action: "" });
     } else {
       handleServerErrors(newUrl, setErrorMessage);
     }
   };
 
   return (
-    <form
+    <Form
       className="cf"
       onSubmit={(e) => {
         e.preventDefault();
@@ -122,7 +128,7 @@ function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
           <button className="cf-button">Shorten</button>
         </div>
       </div>
-    </form>
+    </Form>
   );
 }
 
