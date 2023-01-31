@@ -1,11 +1,17 @@
 import React from "react";
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useMsal } from "@azure/msal-react";
 
 function Nav() {
-  const onClick = () => {
-    console.log("this wont work until I add an user object");
+  const { instance } = useMsal();
+
+  const handleLogout = (logoutType) => {
+    if (logoutType === "redirect") {
+      instance.logoutPopup({
+        postLogoutRedirectUri: "/login",
+      });
+    }
   };
 
   return (
@@ -33,7 +39,10 @@ function Nav() {
             <NavLink className="left-margin nav-text-right" exact to="/my-urls">
               My URLS
             </NavLink>
-            <div className="left-margin nav-text-right" oncClick={onClick}>
+            <div
+              className="left-margin nav-text-right"
+              onClick={() => handleLogout("redirect")}
+            >
               Log Out
             </div>
           </div>

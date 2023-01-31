@@ -16,6 +16,7 @@ function UpdateURL({
   updateURL,
   setUpdatedURL,
   setUpdateURL,
+  setRefresh,
 }) {
   const [formData, setFormData] = useState({ newUrlCode: "" });
 
@@ -32,7 +33,6 @@ function UpdateURL({
   const handleSubmit = async () => {
     resetStylesUpdate();
     setErrorMessage(null);
-    console.log("ey");
 
     let checkEmpty = checkEmptyStringsUpdate(newUrlCode, setErrorMessage);
     if (checkEmpty) {
@@ -53,6 +53,7 @@ function UpdateURL({
       });
 
       setUpdateURL(null);
+      setRefresh((prevState) => !prevState);
     } else {
       handleServerErrorsUpdate(updatedLink, setErrorMessage);
     }

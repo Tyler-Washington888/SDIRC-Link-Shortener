@@ -8,10 +8,12 @@ import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
 
-function MyURLS({ myLinks, setRefresh }) {
+function MyURLS({ myLinks, setRefresh, setMyLinks }) {
   const [newUrl, setNewUrl] = useState(null);
+  const [mySortedLinks, setMySortedLinks] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
+  const [sortByClicks, setSortByClicks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   return (
@@ -35,7 +37,7 @@ function MyURLS({ myLinks, setRefresh }) {
                 <div className="murls-error-message">{errorMessage}</div>
               </div>
             ) : (
-              <div>hey</div>
+              <div></div>
             )}
           </div>
           <div className="murls-form-container">
@@ -91,12 +93,24 @@ function MyURLS({ myLinks, setRefresh }) {
       )}
       <div className="mid-page-banner"></div>
       <div className="murls-table-container">
-        <MyURLSTable
-          myLinks={myLinks}
-          setUpdateURL={setUpdateURL}
-          setUpdatedURL={setUpdatedURL}
-          setErrorMessage={setErrorMessage}
-        />
+        {mySortedLinks ? (
+          <MyURLSTable
+            setMyLinks={setMyLinks}
+            myLinks={mySortedLinks}
+            setUpdateURL={setUpdateURL}
+            setUpdatedURL={setUpdatedURL}
+            setErrorMessage={setErrorMessage}
+          />
+        ) : (
+          <MyURLSTable
+            sortByClicks={sortByClicks}
+            setMyLinks={setMyLinks}
+            myLinks={myLinks}
+            setUpdateURL={setUpdateURL}
+            setUpdatedURL={setUpdatedURL}
+            setErrorMessage={setErrorMessage}
+          />
+        )}
       </div>
     </div>
   );

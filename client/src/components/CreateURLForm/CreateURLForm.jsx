@@ -61,6 +61,8 @@ function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
         longUrl: newUrl.longUrl,
         shortUrl: newUrl.shortUrl,
       });
+
+      setRefresh((prevState) => !prevState);
     } else {
       handleServerErrors(newUrl, setErrorMessage);
     }

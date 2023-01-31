@@ -43,6 +43,8 @@ function MyURLSTable({
                     });
 
                     setErrorMessage(null);
+                    // enhances ui by scrolling document back to the top to the updateURLForm
+                    document.documentElement.scrollTop = 0;
                   }}
                 >
                   Edit
