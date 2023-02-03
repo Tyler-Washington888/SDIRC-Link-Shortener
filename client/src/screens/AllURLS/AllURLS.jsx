@@ -5,7 +5,7 @@ import "./AllURLS.css";
 import { useState } from "react";
 import URLSTable from "../../components/URLSTable/URLSTable.jsx";
 
-function AllURLS({ links, setRefresh }) {
+function AllURLS({ links, setRefresh, user }) {
   const [newUrl, setNewUrl] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -15,11 +15,11 @@ function AllURLS({ links, setRefresh }) {
         <div className="aurls-cta">
           {newUrl ? (
             <div className="aurls-text">
-              Tyler, your link was shortened and is ready for use.
+              Your link was shortened and is ready for use.
             </div>
           ) : (
             <div className="aurls-text">
-              Hi Tyler, complete the form to create a shortened URL!
+              Hi, complete the form to create a shortened URL!
             </div>
           )}
           {errorMessage ? (

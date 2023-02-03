@@ -32,6 +32,8 @@ function MyURLSTable({
                 <button
                   className="my-urls-button"
                   onClick={() => {
+                    document.documentElement.scrollTop = 0;
+
                     setUpdatedURL(null);
 
                     setUpdateURL({

@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
+import "./Login.css";
+import LoginForm from "../../components/LoginForm/LoginForm.jsx";
+import { useState } from "react";
 
-
-function Login() {
+function Login({ setUser }) {
+  const [errorMessage, setErrorMessage] = useState(false);
   return (
-    <div >
-      All URls
+    <div className="login-page">
+      {errorMessage ? <div>Invalid username or password</div> : <></>}
+      <LoginForm setErrorMessage={setErrorMessage} setUser={setUser} />
     </div>
-    
-  )
+  );
 }
 
-export default Login
+export default Login;

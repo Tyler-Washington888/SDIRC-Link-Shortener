@@ -8,7 +8,7 @@ import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
 
-function MyURLS({ myLinks, setRefresh }) {
+function MyURLS({ myLinks, setRefresh, user }) {
   const [newUrl, setNewUrl] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
@@ -21,12 +21,11 @@ function MyURLS({ myLinks, setRefresh }) {
           <div className="murls-cta">
             {updateURL && !updatedURL ? (
               <div className="murls-text">
-                Hi Tyler, complete the form to update the custom name for your
-                URL!
+                Hi, complete the form to update the custom name for your URL!
               </div>
             ) : (
               <div className="murls-text">
-                Tyler, your link has been renamed and is ready for use.
+                Your link has been renamed and is ready for use.
               </div>
             )}
             {errorMessage ? (
@@ -35,7 +34,7 @@ function MyURLS({ myLinks, setRefresh }) {
                 <div className="murls-error-message">{errorMessage}</div>
               </div>
             ) : (
-              <div>hey</div>
+              <div></div>
             )}
           </div>
           <div className="murls-form-container">
@@ -60,11 +59,11 @@ function MyURLS({ myLinks, setRefresh }) {
           <div className="murls-cta">
             {newUrl ? (
               <div className="murls-text">
-                Tyler, your link was shortened and is ready for use.
+                Your link was shortened and is ready for use.
               </div>
             ) : (
               <div className="murls-text">
-                Hi Tyler, complete the form to create a shortened URL!
+                Hi, complete the form to create a shortened URL!
               </div>
             )}
             {errorMessage ? (

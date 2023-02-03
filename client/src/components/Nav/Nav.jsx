@@ -3,7 +3,7 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Nav() {
+function Nav({ user }) {
   const onClick = () => {
     console.log("this wont work until I add an user object");
   };
@@ -20,7 +20,7 @@ function Nav() {
           <div className="nav-text">SDIRC.tiny</div>
         </NavLink>
         <div className="nav-user-logout">
-          <div className="nav-text-user">Tyler Washington</div>
+          <div className="nav-text-user">{user.username}</div>
           <div className="nav-all-my-logout">
             <NavLink
               className="nav-text-right"

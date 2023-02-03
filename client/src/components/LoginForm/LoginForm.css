@@ -1,0 +1,10 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 30%;
+  height: 700px;
+  align-items: center;
+  background-color: #41608e;
+  border-radius: 6px;
+}
