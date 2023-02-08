@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { updateLink } from "../../services/links";
 import { useState } from "react";
+import { Form } from "react-router-dom";
 import "./UpdateURL.css";
 import {
   checkEmptyStringsUpdate,
   resetStylesUpdate,
 } from "../../utils/emptyStringsUpdate";
-import {
-  checkIsValidURLUpdate,
-  handleServerErrorsUpdate,
-} from "../../utils/validURLUpdate";
 
 function UpdateURL({
   setErrorMessage,
@@ -32,17 +29,16 @@ function UpdateURL({
   const handleSubmit = async () => {
     resetStylesUpdate();
     setErrorMessage(null);
-    console.log("ey");
 
-    let checkEmpty = checkEmptyStringsUpdate(newUrlCode, setErrorMessage);
-    if (checkEmpty) {
-      return;
-    }
+    // let checkEmpty = checkEmptyStringsUpdate(newUrlCode, setErrorMessage);
+    // if (checkEmpty) {
+    //   return;
+    // }
 
-    let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
-    if (checkValid) {
-      return;
-    }
+    // let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
+    // if (checkValid) {
+    //   return;
+    // }
 
     const updatedLink = await updateLink(updateURL.id, formData);
     if (typeof updatedLink !== "string") {
@@ -53,13 +49,14 @@ function UpdateURL({
       });
 
       setUpdateURL(null);
+      // refreshLinks();
     } else {
-      handleServerErrorsUpdate(updatedLink, setErrorMessage);
+      // handleServerErrorsUpdate(updatedLink, setErrorMessage);
     }
   };
 
   return (
-    <form
+    <Form
       className="update-url"
       onSubmit={(e) => {
         e.preventDefault();
@@ -120,7 +117,7 @@ function UpdateURL({
           <button className="update-button">Update</button>
         </di>
       </div>
-    </form>
+    </Form>
   );
 }
 
