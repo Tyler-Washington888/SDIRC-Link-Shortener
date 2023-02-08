@@ -8,7 +8,7 @@ function Login({ setUser, setRefresh }) {
   return (
     <div className="login-page">
       {errorMessage ? (
-        <div className="invalid-user">**INVALID USERNAME OR PASSWORD**</div>
+        <div className="invalid-user">*INVALID USERNAME OR PASSWORD*</div>
       ) : (
         <div className="invalid-user-none"></div>
       )}
