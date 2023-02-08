@@ -102,7 +102,7 @@ function CreateURLForm({ setErrorMessage, setNewUrl, user }) {
             <div>New URL Name</div>
           </div>
           <div className="cf-newUrl-container">
-            <div className="cf-domain">https://sdirc/</div>
+            <div className="cf-domain">https://tinysdirc.com/</div>
             <input
               className="cf-newURL-input"
               id="newURL-box"
