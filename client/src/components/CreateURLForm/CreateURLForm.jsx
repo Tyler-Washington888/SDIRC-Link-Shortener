@@ -8,7 +8,7 @@ import {
 } from "../../utils/emptyStrings";
 import { checkIsValidURL, handleServerErrors } from "../../utils/validURL";
 
-function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh, user }) {
+function CreateURLForm({ setErrorMessage, setNewUrl, user }) {
   const [formData, setFormData] = useState({
     longUrl: "",
     urlCode: "",

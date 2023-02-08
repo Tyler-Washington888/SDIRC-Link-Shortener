@@ -4,7 +4,7 @@ import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./MyURLS.css";
 import { useState, useEffect } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
-import UpdateURL from "../../components/UpdateURL/UpdateURL";
+import UpdateURL from "../../components/UpdateURL/UpdateURL.jsx";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
 import { getLinks } from "../../services/links";
@@ -109,8 +109,7 @@ function MyURLS({ setRefresh, user, refresh, links }) {
       <div className="mid-page-banner"></div>
       <div className="murls-table-container">
         <MyURLSTable
-          user={user}
-          links={links}
+          updateURL={updateURL}
           myLinks={myLinks}
           setUpdateURL={setUpdateURL}
           setUpdatedURL={setUpdatedURL}

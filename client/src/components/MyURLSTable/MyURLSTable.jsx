@@ -6,8 +6,7 @@ function MyURLSTable({
   setUpdateURL,
   setUpdatedURL,
   setErrorMessage,
-  links,
-  user,
+  updateURL,
 }) {
   return (
     <table className="my-urls-container">
@@ -17,7 +16,7 @@ function MyURLSTable({
           <th className="my-urls-th-short-long-url">Long URL</th>
           <th className="my-urls-th-createdOn-clicks-edit">Date</th>
           <th className="my-urls-th-createdOn-clicks-edit">Clicks</th>
-          <th className="my-urls-th-createdOn-clicks-edit">Edit</th>
+          {/* <th className="my-urls-th-createdOn-clicks-edit">Edit</th> */}
         </tr>
       </thead>
       <tbody>
@@ -30,28 +29,28 @@ function MyURLSTable({
                 {link.date.slice(4, 15)}
               </td>
               <td className="th-createdOn-clicks-edit">{link.clicks}</td>
-              <td className="th-createdOn-clicks-edit">
+              {/* <td className="th-createdOn-clicks-edit">
                 <button
                   className="my-urls-button"
                   onClick={() => {
                     document.documentElement.scrollTop = 0;
-
                     setUpdatedURL(null);
 
-                    setUpdateURL({
-                      urlCode: "",
-                      longURL: link.longUrl,
-                      shortURL: link.shortUrl,
-                      email: link.email,
-                      id: link._id,
-                    });
+                    // setUpdateURL({
+                    //   urlCode: "",
+                    //   longURL: link.longUrl,
+                    //   shortURL: link.shortUrl,
+                    //   email: link.email,
+                    //   id: link._id,
+                    // });
+                    // console.log(updateURL);
 
                     setErrorMessage(null);
                   }}
                 >
                   Edit
-                </button>
-              </td>
+                </button> */}
+              {/* </td> */}
             </tr>
           );
         })}

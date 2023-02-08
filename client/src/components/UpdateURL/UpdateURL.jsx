@@ -7,6 +7,15 @@ import {
   checkEmptyStringsUpdate,
   resetStylesUpdate,
 } from "../../utils/emptyStringsUpdate";
+import {
+  checkIsValidURLUpdate,
+  handleServerErrorsUpdate,
+} from "../../utils/validURLUpdate";
+import {
+  checkEmptyStrings,
+  emptyStringMessages,
+  resetStyles,
+} from "../../utils/emptyStrings";
 
 function UpdateURL({
   setErrorMessage,
@@ -30,15 +39,15 @@ function UpdateURL({
     resetStylesUpdate();
     setErrorMessage(null);
 
-    // let checkEmpty = checkEmptyStringsUpdate(newUrlCode, setErrorMessage);
-    // if (checkEmpty) {
-    //   return;
-    // }
+    let checkEmpty = checkEmptyStringsUpdate(newUrlCode, setErrorMessage);
+    if (checkEmpty) {
+      return;
+    }
 
-    // let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
-    // if (checkValid) {
-    //   return;
-    // }
+    let checkValid = checkIsValidURLUpdate(newUrlCode, setErrorMessage);
+    if (checkValid) {
+      return;
+    }
 
     const updatedLink = await updateLink(updateURL.id, formData);
     if (typeof updatedLink !== "string") {
@@ -49,9 +58,8 @@ function UpdateURL({
       });
 
       setUpdateURL(null);
-      // refreshLinks();
     } else {
-      // handleServerErrorsUpdate(updatedLink, setErrorMessage);
+      handleServerErrorsUpdate(updatedLink, setErrorMessage);
     }
   };
 
