@@ -14,7 +14,9 @@ const getLinks = asyncHandler(async (req, res) => {
 // @route GET /api/myLinks
 // @access Public
 const getMyLinks = asyncHandler(async (req, res) => {
+  console.log(req.body);
   const { email } = req.body;
+  console.log(email);
 
   try {
     const links = await Url.find({ email });
@@ -24,7 +26,7 @@ const getMyLinks = asyncHandler(async (req, res) => {
     }
   } catch (error) {
     console.error(err);
-    res.status(500).json("Server error");
+    res.status(500).json("nah");
   }
 });
 

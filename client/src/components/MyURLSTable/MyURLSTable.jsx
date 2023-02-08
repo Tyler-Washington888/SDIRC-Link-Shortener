@@ -6,6 +6,8 @@ function MyURLSTable({
   setUpdateURL,
   setUpdatedURL,
   setErrorMessage,
+  links,
+  user,
 }) {
   return (
     <table className="my-urls-container">

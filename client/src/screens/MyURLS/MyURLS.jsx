@@ -2,17 +2,33 @@ import React from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./MyURLS.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
+import { getLinks } from "../../services/links";
 
-function MyURLS({ myLinks, setRefresh, user }) {
+function MyURLS({ setRefresh, user, refresh, links }) {
+  const [myLinks, setMyLinks] = useState(null);
   const [newUrl, setNewUrl] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      let allLinks = await getLinks();
+      if (allLinks) {
+        allLinks = allLinks
+          .filter((link) => link.email == user?.email)
+          .reverse();
+
+        setMyLinks(allLinks);
+      }
+    };
+    fetchLinks();
+  }, [links]);
 
   return (
     <div className="murls-container">
@@ -21,7 +37,7 @@ function MyURLS({ myLinks, setRefresh, user }) {
           <div className="murls-cta">
             {updateURL && !updatedURL ? (
               <div className="murls-text">
-                Hi, complete the form to update the custom name for your URL!
+                Complete the form to update the custom name for your URL!
               </div>
             ) : (
               <div className="murls-text">
@@ -45,6 +61,7 @@ function MyURLS({ myLinks, setRefresh, user }) {
                 setUpdatedURL={setUpdatedURL}
                 setRefresh={setRefresh}
                 setErrorMessage={setErrorMessage}
+                user={user}
               />
             ) : (
               <UpdatedURLDetails
@@ -83,6 +100,7 @@ function MyURLS({ myLinks, setRefresh, user }) {
                 setNewUrl={setNewUrl}
                 setErrorMessage={setErrorMessage}
                 setRefresh={setRefresh}
+                user={user}
               />
             )}
           </div>
@@ -91,6 +109,8 @@ function MyURLS({ myLinks, setRefresh, user }) {
       <div className="mid-page-banner"></div>
       <div className="murls-table-container">
         <MyURLSTable
+          user={user}
+          links={links}
           myLinks={myLinks}
           setUpdateURL={setUpdateURL}
           setUpdatedURL={setUpdatedURL}

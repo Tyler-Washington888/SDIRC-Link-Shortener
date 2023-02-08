@@ -20,7 +20,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .cf-link-logo {
@@ -77,22 +77,20 @@
 }
 
 .cf-button-container {
-  height: 55px;
+  height: 70px;
   /* background-color: brown; */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 .cf-button {
-  height: 80px;
+  height: 70px;
   width: 40%;
   font-size: 80%;
   background-color: #8fc853;
   border-width: 0px;
   box-shadow: 0 4px 0px 4px rgba(0, 0, 0, 0.4);
   border-radius: 2px;
-  position: relative;
-  bottom: 20px;
 }
 
 .cf-button:hover {

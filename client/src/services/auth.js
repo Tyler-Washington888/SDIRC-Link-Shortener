@@ -24,10 +24,24 @@ export const loginUser = async (loginData) => {
 };
 
 export const createUser = async (registerData) => {
-  const res = await api.post("/api/users/", registerData);
-  localStorage.setItem("authToken", res.data.token);
-
-  return res.data;
+  try {
+    const res = await api.post("/api/users/", registerData);
+    return res.data;
+  } catch (error) {
+    if (error.response) {
+      return error.response.data;
+    } else if (error.request) {
+      /*
+       * The request was made but no response was received, `error.request`
+       * is an instance of XMLHttpRequest in the browser and an instance
+       * of http.ClientRequest in Node.js
+       */
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request and triggered an Error
+      console.log("Error", error.message);
+    }
+  }
 };
 
 export const verifyUser = async () => {

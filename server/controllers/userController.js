@@ -10,8 +10,7 @@ const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.status(400);
-    throw new Error("Please add all fields");
+    res.status(400).send("Please add all fields");
   }
 
   // check if user exists

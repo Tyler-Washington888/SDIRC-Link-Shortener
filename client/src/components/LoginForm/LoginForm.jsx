@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./LoginForm.css";
 import { loginUser } from "../../services/auth";
+import { useNavigate } from "react-router";
 
-function LoginForm({ setErrorMessage, setUser }) {
+function LoginForm({ setErrorMessage, setUser, setRefresh }) {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const { email, password } = userData;
 
@@ -20,9 +22,12 @@ function LoginForm({ setErrorMessage, setUser }) {
   };
 
   const handleLogin = async () => {
+    setErrorMessage(false);
     const correctCred = await loginUser(userData);
     if (typeof correctCred !== "string") {
       setUser(correctCred);
+      setRefresh((prevState) => !prevState);
+      navigate("/");
     } else {
       setErrorMessage(true);
     }
@@ -37,8 +42,12 @@ function LoginForm({ setErrorMessage, setUser }) {
       }}
     >
       <div className="login-logo-title-div">
-        <div>Image</div>
-        <div>SDIRC.Tiny</div>
+        <img
+          className="login-logo"
+          src="https://res.cloudinary.com/daefwvbfj/image/upload/v1670863788/SDIRC-Link-Shortener/images%20and%20icons/SDIRC_2020_Logo_kys8j1.png"
+          alt="School District Logo"
+        ></img>
+        <div className="login-title">SDIRC.tiny</div>
       </div>
       <br></br>
       <label className="login-label-div">

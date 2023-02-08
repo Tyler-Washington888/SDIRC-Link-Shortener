@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./AllURLS.css";
@@ -8,6 +8,7 @@ import URLSTable from "../../components/URLSTable/URLSTable.jsx";
 function AllURLS({ links, setRefresh, user }) {
   const [newUrl, setNewUrl] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [myLinks, setMyLinks] = useState(null);
 
   return (
     <div className="aurls-container">
@@ -39,6 +40,7 @@ function AllURLS({ links, setRefresh, user }) {
               setErrorMessage={setErrorMessage}
               setNewUrl={setNewUrl}
               setRefresh={setRefresh}
+              user={user}
             />
           )}
         </div>

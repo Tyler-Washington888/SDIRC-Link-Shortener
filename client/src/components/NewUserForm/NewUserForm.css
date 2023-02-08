@@ -1,9 +1,9 @@
-.login-form {
+.nu-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 30%;
-  height: 530px;
+  height: 700px;
   align-items: center;
   background-color: #41608e;
   border-radius: 6px;
@@ -11,24 +11,21 @@
   color: white;
 }
 
-.login-logo-title-div {
+.nu-logo-title-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-
-.login-logo {
+.nu-logo {
   margin-right: 8px;
   height: 120px;
   width: 120px;
 }
-
-.login-title {
+.nu-title {
   font-size: 70px;
 }
-
-.login-label-div {
+.nu-label-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,28 +34,25 @@
   width: 95%;
 }
 
-.login-label-title {
+.nu-label-title {
   font-size: 30px;
   margin-bottom: 15px;
 }
-
-.login-label-input {
+.nu-label-input {
   height: 80px;
   border-radius: 6px;
   padding-left: 10px;
   font-size: 20px;
   /* box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4); */
 }
-
-.login-button-div {
+.nu-button-div {
   margin-top: 20px;
   height: 70px;
   width: 95%;
   display: flex;
   justify-content: flex-end;
 }
-
-.login-button {
+.nu-button {
   width: 200px;
   background-color: #8fc853;
   border-color: rgba(250, 235, 215, 0);

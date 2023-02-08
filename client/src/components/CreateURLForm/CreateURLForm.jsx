@@ -8,15 +8,13 @@ import {
 } from "../../utils/emptyStrings";
 import { checkIsValidURL, handleServerErrors } from "../../utils/validURL";
 
-function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
-  //   will get user.email from user object once i integrate active directory
-  const user = { email: "tyler.washington.work" };
+function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh, user }) {
   const [formData, setFormData] = useState({
     longUrl: "",
     urlCode: "",
-    email: user.email,
+    email: user?.email,
   });
-  const { longUrl, urlCode } = formData;
+  const { longUrl, urlCode, email } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +52,7 @@ function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh }) {
       setFormData(() => ({
         longUrl: "",
         urlCode: "",
-        email: user.email,
+        email,
       }));
 
       setNewUrl({

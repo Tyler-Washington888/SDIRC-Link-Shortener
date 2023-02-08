@@ -3,9 +3,11 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Nav({ user }) {
+function Nav({ user, setUser, removeToken }) {
   const onClick = () => {
-    console.log("this wont work until I add an user object");
+    setUser(null);
+    localStorage.removeItem("authToken");
+    removeToken();
   };
 
   return (
@@ -33,13 +35,24 @@ function Nav({ user }) {
             <NavLink className="left-margin nav-text-right" exact to="/my-urls">
               My URLS
             </NavLink>
-            <div className="left-margin nav-text-right" oncClick={onClick}>
+            <button
+              className="left-margin nav-text-right logout-button"
+              onClick={onClick}
+            >
               Log Out
-            </div>
+            </button>
           </div>
         </div>
       </div>
-      <div className="aurls-banner"></div>
+      <div className="nav-banner">
+        {user.email === "isdev@gmail.com" ? (
+          <NavLink to="/new-user" className="new-user-button">
+            New User
+          </NavLink>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

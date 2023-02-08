@@ -9,10 +9,11 @@ export const getLinks = async () => {
   }
 };
 
-export const getMyLinks = async (email) => {
+export const getMyLinks = async (mail) => {
   try {
-    const response = await api.get("/api/links/myLinks", email);
-    return response.data;
+    api.defaults.headers.common.authorization = null;
+    const responses = await api.get("/api/links/myLinks", mail);
+    return responses.data;
   } catch (error) {
     throw error;
   }
