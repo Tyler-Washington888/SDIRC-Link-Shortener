@@ -80,14 +80,14 @@
 }
 
 .update-button-container {
-  height: 55px;
+  height: 80px;
   /* background-color: brown; */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 .update-button {
-  height: 80px;
+  height: 70px;
   width: 40%;
   font-size: 80%;
   background-color: #8fc853;

@@ -1,17 +1,13 @@
 import React from "react";
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
-import { useMsal } from "@azure/msal-react";
+import { useState, useEffect } from "react";
 
-function Nav() {
-  const { instance } = useMsal();
-
-  const handleLogout = (logoutType) => {
-    if (logoutType === "redirect") {
-      instance.logoutPopup({
-        postLogoutRedirectUri: "/login",
-      });
-    }
+function Nav({ user, setUser, removeToken }) {
+  const onClick = () => {
+    setUser(null);
+    localStorage.removeItem("authToken");
+    removeToken();
   };
 
   return (
@@ -26,7 +22,7 @@ function Nav() {
           <div className="nav-text">SDIRC.tiny</div>
         </NavLink>
         <div className="nav-user-logout">
-          <div className="nav-text-user">Tyler Washington</div>
+          <div className="nav-text-user">{user.username}</div>
           <div className="nav-all-my-logout">
             <NavLink
               className="nav-text-right"
@@ -39,16 +35,24 @@ function Nav() {
             <NavLink className="left-margin nav-text-right" exact to="/my-urls">
               My URLS
             </NavLink>
-            <div
-              className="left-margin nav-text-right"
-              onClick={() => handleLogout("redirect")}
+            <button
+              className="left-margin nav-text-right logout-button"
+              onClick={onClick}
             >
               Log Out
-            </div>
+            </button>
           </div>
         </div>
       </div>
-      <div className="aurls-banner"></div>
+      <div className="nav-banner">
+        {user.email === "isdev@gmail.com" ? (
+          <NavLink to="/new-user" className="new-user-button">
+            New User
+          </NavLink>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

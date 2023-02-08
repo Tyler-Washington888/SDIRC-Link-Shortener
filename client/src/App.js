@@ -1,93 +1,93 @@
-import {
-  Routes,
-  Route,
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-  Redirect,
-} from "react-router-dom";
-import {
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-  useAccount,
-} from "@azure/msal-react";
-
+import { Route, Routes } from "react-router";
 import AllURLS from "./screens/AllURLS/AllURLS.jsx";
 import Login from "./screens/Login/Login.jsx";
 import MyURLS from "./screens/MyURLS/MyURLS.jsx";
+import NewUser from "./screens/NewUser/NewUser.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { getLinks } from "./services/links.js";
-
-export const LinkContext = React.createContext({
-  links: [],
-  refreshLinks: () => {
-    // do nothing
-  },
-});
-
-export const AuthAccountInfoContext = React.createContext(null);
+import { verifyUser, removeToken } from "./services/auth.js";
 
 function App() {
-  const accountInfo = useAccount(); // ***RIGHT HERE IS WHERE WE GET THE INFO FROM THE AUTH***
-  /** STRUCTURE OF accountInfo OBJECT
-    {
-      // home account identifier for this account object
-      homeAccountId: string;
-
-      // Entity who issued the token represented as a full host of it (e.g. login.microsoftonline.com)
-      environment: string;
-
-      // Full tenant or organizational id that this account belongs to
-      tenantId: string;
-
-      // preferred_username claim of the id_token that represents this account.
-      username: string;
-    };
- */
-  try {
-    accountInfo.loginRedirect({});
-  } catch (err) {
-    // handle error
-  }
-
   const [links, setLinks] = useState(null);
-
-  const [refresh, setRefresh] = useState(true);
-  const refreshLinks = () => {
-    setRefresh(!refresh);
-  };
+  const [user, setUser] = useState(null);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchLinks = async () => {
       let allLinks = await getLinks();
       if (allLinks) {
         allLinks = allLinks.reverse();
+
         setLinks(allLinks);
       }
     };
+
     fetchLinks();
-  }, [refresh]);
+  }, [links]);
+
+  useEffect(() => {
+    const handleVerify = async () => {
+      const userr = await verifyUser();
+      setUser(userr);
+    };
+    handleVerify();
+  }, []);
 
   return (
     <div className="App">
-      <Nav />
-      <LinkContext.Provider value={{ links, refreshLinks }}>
-        <AuthAccountInfoContext.Provider>
+      {user ? (
+        <>
+          <Nav setUser={setUser} user={user} removeToken={removeToken} />
           <Routes>
-            <AuthenticatedTemplate>
-              <Route path="/my-urls" element={<MyURLS />} />
-              <Route path="/" element={<AllURLS />} />
-            </AuthenticatedTemplate>
-            <UnauthenticatedTemplate>
-              <Route path="/" element={<Redirect path="/login" />} />
-              <Route path="/login" element={<Login />} />
-            </UnauthenticatedTemplate>
+            <Route
+              path="/"
+              element={
+                <AllURLS links={links} user={user} setRefresh={setRefresh} />
+              }
+            />
+            <Route
+              path="/my-urls"
+              element={
+                <MyURLS
+                  user={user}
+                  setRefresh={setRefresh}
+                  refresh={refresh}
+                  links={links}
+                />
+              }
+            />
+            <Route path="/new-user" element={<NewUser />} />
           </Routes>
-        </AuthAccountInfoContext.Provider>
-      </LinkContext.Provider>
+        </>
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Login
+                setLinks={setLinks}
+                setUser={setUser}
+                setRefresh={setRefresh}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Login setUser={setUser} setRefresh={setRefresh} />}
+          />
+          <Route
+            exact
+            path="/my-urls"
+            element={<Login setUser={setUser} setRefresh={setRefresh} />}
+          />
+        </Routes>
+      )}
     </div>
   );
 }
 
 export default App;
+

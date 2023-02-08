@@ -1,0 +1,62 @@
+.nu-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30%;
+  height: 700px;
+  align-items: center;
+  background-color: #41608e;
+  border-radius: 6px;
+  padding: 80px;
+  color: white;
+}
+
+.nu-logo-title-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nu-logo {
+  margin-right: 8px;
+  height: 120px;
+  width: 120px;
+}
+.nu-title {
+  font-size: 70px;
+}
+.nu-label-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 110px;
+  text-align: center;
+  width: 95%;
+}
+
+.nu-label-title {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.nu-label-input {
+  height: 80px;
+  border-radius: 6px;
+  padding-left: 10px;
+  font-size: 20px;
+  /* box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4); */
+}
+.nu-button-div {
+  margin-top: 20px;
+  height: 70px;
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+}
+.nu-button {
+  width: 200px;
+  background-color: #8fc853;
+  border-color: rgba(250, 235, 215, 0);
+  border-radius: 3px;
+  font-size: 25px;
+  /* box-shadow: 0 4px 8px 4px rgba(0, 4, 4, 0.4); */
+}

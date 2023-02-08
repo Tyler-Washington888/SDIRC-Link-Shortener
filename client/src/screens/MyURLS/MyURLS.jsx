@@ -1,23 +1,34 @@
-import React, { useContext } from "react";
+import React from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./MyURLS.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MyURLSTable from "../../components/MyURLSTable/MyURLSTable";
 import UpdateURL from "../../components/UpdateURL/UpdateURL";
 import UpdatedURLDetails from "../../components/UpdatedURLDetails/UpdatedURLDetails";
 import "./MyURLS.css";
-import { LinkContext } from "../../App";
+import { getLinks } from "../../services/links";
 
-function MyURLS() {
+function MyURLS({ setRefresh, user, refresh, links }) {
+  const [myLinks, setMyLinks] = useState(null);
   const [newUrl, setNewUrl] = useState(null);
-  const [mySortedLinks, setMySortedLinks] = useState(null);
   const [updateURL, setUpdateURL] = useState(null);
   const [updatedURL, setUpdatedURL] = useState(null);
-  const [sortByClicks, setSortByClicks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const { links, refreshLinks } = useContext(LinkContext);
+  useEffect(() => {
+    const fetchLinks = async () => {
+      let allLinks = await getLinks();
+      if (allLinks) {
+        allLinks = allLinks
+          .filter((link) => link.email == user?.email)
+          .reverse();
+
+        setMyLinks(allLinks);
+      }
+    };
+    fetchLinks();
+  }, [links]);
 
   return (
     <div className="murls-container">
@@ -26,12 +37,11 @@ function MyURLS() {
           <div className="murls-cta">
             {updateURL && !updatedURL ? (
               <div className="murls-text">
-                Hi Tyler, complete the form to update the custom name for your
-                URL!
+                Complete the form to update the custom name for your URL!
               </div>
             ) : (
               <div className="murls-text">
-                Tyler, your link has been renamed and is ready for use.
+                Your link has been renamed and is ready for use.
               </div>
             )}
             {errorMessage ? (
@@ -49,7 +59,9 @@ function MyURLS() {
                 setUpdateURL={setUpdateURL}
                 updateURL={updateURL}
                 setUpdatedURL={setUpdatedURL}
+                setRefresh={setRefresh}
                 setErrorMessage={setErrorMessage}
+                user={user}
               />
             ) : (
               <UpdatedURLDetails
@@ -64,11 +76,11 @@ function MyURLS() {
           <div className="murls-cta">
             {newUrl ? (
               <div className="murls-text">
-                Tyler, your link was shortened and is ready for use.
+                Your link was shortened and is ready for use.
               </div>
             ) : (
               <div className="murls-text">
-                Hi Tyler, complete the form to create a shortened URL!
+                Hi, complete the form to create a shortened URL!
               </div>
             )}
             {errorMessage ? (
@@ -88,6 +100,7 @@ function MyURLS() {
                 setNewUrl={setNewUrl}
                 setErrorMessage={setErrorMessage}
                 setRefresh={setRefresh}
+                user={user}
               />
             )}
           </div>
@@ -96,7 +109,9 @@ function MyURLS() {
       <div className="mid-page-banner"></div>
       <div className="murls-table-container">
         <MyURLSTable
-          sortByClicks={mySortedLinks ? false : sortByClicks}
+          user={user}
+          links={links}
+          myLinks={myLinks}
           setUpdateURL={setUpdateURL}
           setUpdatedURL={setUpdatedURL}
           setErrorMessage={setErrorMessage}

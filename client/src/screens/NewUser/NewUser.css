@@ -1,0 +1,38 @@
+.new-user-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #eaeff5;
+}
+
+#nu-invalid-user {
+  height: 140px;
+  width: 30%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  color: black;
+}
+
+#nu-invalid-user-none {
+  /* background-color: aquamarine; */
+  height: 140px;
+  width: 30%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 5px;
+}

@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { LinkContext } from "../../App";
+import React from "react";
 import "./MyURLSTable.css";
 
-function MyURLSTable({ setUpdateURL, setUpdatedURL, setErrorMessage }) {
-  const { links, refreshLinks } = useContext(LinkContext);
-
-  const getUserEmail = () => {
-    return "tyler.washington.work";
-  };
-
+function MyURLSTable({
+  myLinks,
+  setUpdateURL,
+  setUpdatedURL,
+  setErrorMessage,
+  links,
+  user,
+}) {
   return (
     <table className="my-urls-container">
       <thead className="my-urls-thead">
@@ -21,42 +21,40 @@ function MyURLSTable({ setUpdateURL, setUpdatedURL, setErrorMessage }) {
         </tr>
       </thead>
       <tbody>
-        {links
-          .filter((l) => l.email === getUserEmail())
-          .map((link, index) => {
-            return (
-              <tr className="my-urls-tr" key={index}>
-                <td>{link.shortUrl}</td>
-                <td className="my-urls-long-url">{link.longUrl}</td>
-                <td className="th-createdOn-clicks-edit">
-                  {link.date.slice(4, 15)}
-                </td>
-                <td className="th-createdOn-clicks-edit">{link.clicks}</td>
-                <td className="th-createdOn-clicks-edit">
-                  <button
-                    className="my-urls-button"
-                    onClick={() => {
-                      setUpdatedURL(null);
+        {myLinks?.map((link, index) => {
+          return (
+            <tr className="my-urls-tr" key={index}>
+              <td>{link.shortUrl}</td>
+              <td className="my-urls-long-url">{link.longUrl}</td>
+              <td className="th-createdOn-clicks-edit">
+                {link.date.slice(4, 15)}
+              </td>
+              <td className="th-createdOn-clicks-edit">{link.clicks}</td>
+              <td className="th-createdOn-clicks-edit">
+                <button
+                  className="my-urls-button"
+                  onClick={() => {
+                    document.documentElement.scrollTop = 0;
 
-                      setUpdateURL({
-                        urlCode: "",
-                        longURL: link.longUrl,
-                        shortURL: link.shortUrl,
-                        email: link.email,
-                        id: link._id,
-                      });
+                    setUpdatedURL(null);
 
-                      setErrorMessage(null);
-                      // enhances ui by scrolling document back to the top to the updateURLForm
-                      document.documentElement.scrollTop = 0;
-                    }}
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+                    setUpdateURL({
+                      urlCode: "",
+                      longURL: link.longUrl,
+                      shortURL: link.shortUrl,
+                      email: link.email,
+                      id: link._id,
+                    });
+
+                    setErrorMessage(null);
+                  }}
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

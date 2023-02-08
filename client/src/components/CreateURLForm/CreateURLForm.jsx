@@ -1,26 +1,20 @@
 import { createLink } from "../../services/links";
 import "./CreateURLForm.css";
-import { useContext, useState } from "react";
-import { Form, useSubmit } from "react-router-dom";
+import { useState } from "react";
 import {
   checkEmptyStrings,
   emptyStringMessages,
   resetStyles,
 } from "../../utils/emptyStrings";
 import { checkIsValidURL, handleServerErrors } from "../../utils/validURL";
-import { LinkContext } from "../../App";
 
-function CreateURLForm({ setErrorMessage, setNewUrl }) {
-  //   will get user.email from user object once i integrate active directory
-  const user = { email: "tyler.washington.work" };
-  const submit = useSubmit();
-  const { links, refreshLinks } = useContext(LinkContext);
+function CreateURLForm({ setErrorMessage, setNewUrl, setRefresh, user }) {
   const [formData, setFormData] = useState({
     longUrl: "",
     urlCode: "",
-    email: user.email,
+    email: user?.email,
   });
-  const { longUrl, urlCode } = formData;
+  const { longUrl, urlCode, email } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,24 +52,20 @@ function CreateURLForm({ setErrorMessage, setNewUrl }) {
       setFormData(() => ({
         longUrl: "",
         urlCode: "",
-        email: user.email,
+        email,
       }));
 
       setNewUrl({
         longUrl: newUrl.longUrl,
         shortUrl: newUrl.shortUrl,
       });
-
-      // setRefresh((prevState) => !prevState);
-      refreshLinks();
-      submit(null, { method: "post", action: "" });
     } else {
       handleServerErrors(newUrl, setErrorMessage);
     }
   };
 
   return (
-    <Form
+    <form
       className="cf"
       onSubmit={(e) => {
         e.preventDefault();
@@ -128,7 +118,7 @@ function CreateURLForm({ setErrorMessage, setNewUrl }) {
           <button className="cf-button">Shorten</button>
         </div>
       </div>
-    </Form>
+    </form>
   );
 }
 

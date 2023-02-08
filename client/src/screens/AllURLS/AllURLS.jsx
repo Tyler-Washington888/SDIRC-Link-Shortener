@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import CreateURLForm from "../../components/CreateURLForm/CreateURLForm";
 import NewURLDetails from "../../components/NewURLDetails/NewURLDetails.jsx";
 import "./AllURLS.css";
 import { useState } from "react";
 import URLSTable from "../../components/URLSTable/URLSTable.jsx";
-import { LinkContext } from "../../App";
 
-function AllURLS() {
+function AllURLS({ links, setRefresh, user }) {
   const [newUrl, setNewUrl] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const { links, refreshLinks } = useContext(LinkContext);
+  const [myLinks, setMyLinks] = useState(null);
 
   return (
     <div className="aurls-container">
@@ -18,11 +16,11 @@ function AllURLS() {
         <div className="aurls-cta">
           {newUrl ? (
             <div className="aurls-text">
-              Tyler, your link was shortened and is ready for use.
+              Your link was shortened and is ready for use.
             </div>
           ) : (
             <div className="aurls-text">
-              Hi Tyler, complete the form to create a shortened URL!
+              Hi, complete the form to create a shortened URL!
             </div>
           )}
           {errorMessage ? (
@@ -41,13 +39,15 @@ function AllURLS() {
             <CreateURLForm
               setErrorMessage={setErrorMessage}
               setNewUrl={setNewUrl}
+              setRefresh={setRefresh}
+              user={user}
             />
           )}
         </div>
       </div>
       <div className="mid-page-banner"></div>
       <div className="aurls-table-container">
-        <URLSTable />
+        <URLSTable links={links} />
       </div>
     </div>
   );
