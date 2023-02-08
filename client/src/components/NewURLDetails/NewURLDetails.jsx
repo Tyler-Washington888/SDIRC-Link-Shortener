@@ -42,7 +42,7 @@ function NewURLDetails({ newUrl, setNewUrl }) {
           </div>
         </label>
         <div onClick={handleClick} className="nd-button-container">
-          <button className="nd-new-url-button">New URL</button>
+          <button className="nd-new-url-button">New URL </button>
         </div>
       </div>
     </form>
